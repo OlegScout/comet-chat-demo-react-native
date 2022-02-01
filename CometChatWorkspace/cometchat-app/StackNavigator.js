@@ -24,23 +24,9 @@ function StackNavigator(props) {
     <NavigationContainer>
       <Stack.Navigator
         headerMode="none"
-        initialRouteName={props.isLoggedIn ? 'HomePage' : null}>
+        initialRouteName={props.isLoggedIn ? 'CometChatUI' : null}>
         <Stack.Screen name="LoginPage" component={LoginPage} />
-        <Stack.Screen name="HomePage" component={HomePage} />
         <Stack.Screen name="CometChatUI" component={CometChatUI} />
-        <Stack.Screen
-          name="Conversation"
-          component={CometChatConversationListWithMessages}
-        />
-        <Stack.Screen
-          name="ConversationComponent"
-          component={CometChatConversationList}
-        />
-        <Stack.Screen name="Group" component={CometChatGroupListWithMessages} />
-        <Stack.Screen name="GroupComponent" component={CometChatGroupList} />
-        <Stack.Screen name="Users" component={CometChatUserListWithMessages} />
-        <Stack.Screen name="UsersComponent" component={CometChatUserList} />
-        <Stack.Screen name="CometChatMessages" component={CometChatMessages} />
       </Stack.Navigator>
     </NavigationContainer>
   );
