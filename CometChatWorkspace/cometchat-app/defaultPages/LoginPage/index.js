@@ -39,7 +39,7 @@ class LoginPage extends React.PureComponent {
 
   componentDidUpdate() {
     if (this.props.isLoggedIn) {
-      this.props.navigation.navigate('HomePage');
+      this.props.navigation.navigate('CometChatUI');
     }
   }
 
@@ -157,7 +157,11 @@ class LoginPage extends React.PureComponent {
               </View>
               <TouchableOpacity
                 style={style.loginBtn}
-                onPress={() => this.login('', true)}>
+                onPress={() => {
+                  this.login('', true)
+                  props.navigation.navigate('CometChatUI');
+                }}
+              >
                 <Text style={style.btnText}>Login</Text>
               </TouchableOpacity>
             </View>
