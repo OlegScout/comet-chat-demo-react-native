@@ -140,6 +140,32 @@ class LoginPage extends React.PureComponent {
                 </View>
                 <Text style={style.btnText}>Alexandra</Text>
               </TouchableOpacity>
+              <TouchableOpacity
+                style={style.userWrapperStyle}
+                onPress={() => this.login('oleh')}>
+                <View style={style.thumbnailWrapperStyle}>
+                  <CometChatAvatar
+                    image={{
+                      uri:
+                        'https://olegkruchay.com/public/ok.jpg',
+                    }}
+                  />
+                </View>
+                <Text style={style.btnText}>Oleh</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={style.userWrapperStyle}
+                onPress={() => this.login('dima')}>
+                <View style={style.thumbnailWrapperStyle}>
+                  <CometChatAvatar
+                    image={{
+                      uri:
+                        'https://data-us.cometchat.io/assets/images/avatars/cyclops.png',
+                    }}
+                  />
+                </View>
+                <Text style={style.btnText}>Dima</Text>
+              </TouchableOpacity>
             </View>
             <View style={style.uidWrapperStyle}>
               {/*<View>*/}
