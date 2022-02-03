@@ -15,28 +15,28 @@ const HomePage = (props) => {
     <ScrollView>
       <SafeAreaView>
         <View style={styles.wrapperStyle}>
-          <Text style={styles.titleStyle}>
-            The UI Kit has different ways to make fully customizable UI required
-            to build a chat application.
-          </Text>
-          <Text style={styles.subTitleStyle}>
-            The UI Kit has been developed to help developers of different levels
-            of experience to build a chat application in a few minutes to a
-            couple of hours.
-          </Text>
+          {/*<Text style={styles.titleStyle}>*/}
+          {/*  The UI Kit has different ways to make fully customizable UI required*/}
+          {/*  to build a chat application.*/}
+          {/*</Text>*/}
+          {/*<Text style={styles.subTitleStyle}>*/}
+          {/*  The UI Kit has been developed to help developers of different levels*/}
+          {/*  of experience to build a chat application in a few minutes to a*/}
+          {/*  couple of hours.*/}
+          {/*</Text>*/}
 
           <View style={styles.componentStyle}>
             <View style={styles.boxStyle}>
               <View style={styles.boxContent}>
                 <View style={styles.titleWrapperStyle}>
-                  <Text style={styles.componentTitleStyle}>CometChatUI</Text>
+                  <Text style={styles.componentTitleStyle}>GoSource app based on CometChatUI is ready for testing</Text>
                 </View>
-                <View style={styles.descWrapperStyle}>
-                  <Text>
-                    The <Text style={styles.descTextColor}>CometChatUI</Text>{' '}
-                    component launches a fully working chat application.
-                  </Text>
-                </View>
+                {/*<View style={styles.descWrapperStyle}>*/}
+                {/*  <Text>*/}
+                {/*    The <Text style={styles.descTextColor}>CometChatUI</Text>{' '}*/}
+                {/*    component launches a fully working chat application.*/}
+                {/*  </Text>*/}
+                {/*</View>*/}
                 <View style={styles.linkContainer}>
                   <TouchableOpacity
                     style={styles.linkWrapperStyle}
@@ -50,169 +50,169 @@ const HomePage = (props) => {
             </View>
           </View>
 
-          <View style={styles.componentStyle}>
-            <View style={styles.boxStyle}>
-              <View style={styles.boxContent}>
-                <View style={styles.titleWrapperStyle}>
-                  <Text style={styles.componentTitleStyle}>Conversations</Text>
-                </View>
-                <View style={styles.descWrapperStyle}>
-                  <Text>
-                    The{' '}
-                    <Text style={styles.descTextColor}>
-                      CometChatConversationListWithMessages
-                    </Text>{' '}
-                    component launches a Conversation list with messaging.
-                  </Text>
-                </View>
-                <View style={styles.linkContainer}>
-                  <TouchableOpacity
-                    style={styles.linkWrapperStyle}
-                    onPress={() => {
-                      props.navigation.navigate('Conversation');
-                    }}>
-                    <Text style={styles.linkStyle}>Launch</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
-          </View>
+          {/*<View style={styles.componentStyle}>*/}
+          {/*  <View style={styles.boxStyle}>*/}
+          {/*    <View style={styles.boxContent}>*/}
+          {/*      <View style={styles.titleWrapperStyle}>*/}
+          {/*        <Text style={styles.componentTitleStyle}>Conversations</Text>*/}
+          {/*      </View>*/}
+          {/*      <View style={styles.descWrapperStyle}>*/}
+          {/*        <Text>*/}
+          {/*          The{' '}*/}
+          {/*          <Text style={styles.descTextColor}>*/}
+          {/*            CometChatConversationListWithMessages*/}
+          {/*          </Text>{' '}*/}
+          {/*          component launches a Conversation list with messaging.*/}
+          {/*        </Text>*/}
+          {/*      </View>*/}
+          {/*      <View style={styles.linkContainer}>*/}
+          {/*        <TouchableOpacity*/}
+          {/*          style={styles.linkWrapperStyle}*/}
+          {/*          onPress={() => {*/}
+          {/*            props.navigation.navigate('Conversation');*/}
+          {/*          }}>*/}
+          {/*          <Text style={styles.linkStyle}>Launch</Text>*/}
+          {/*        </TouchableOpacity>*/}
+          {/*      </View>*/}
+          {/*    </View>*/}
+          {/*  </View>*/}
+          {/*</View>*/}
 
-          <View style={styles.componentStyle}>
-            <View style={styles.boxStyle}>
-              <View style={styles.boxContent}>
-                <View style={styles.titleWrapperStyle}>
-                  <Text style={styles.componentTitleStyle}>Groups</Text>
-                </View>
-                <View style={styles.descWrapperStyle}>
-                  <Text>
-                    The
-                    <Text style={styles.descTextColor}>
-                      {' '}
-                      CometChatGroupListWithMessages
-                    </Text>{' '}
-                    component launches a Group list with messaging.
-                  </Text>
-                </View>
-                <View style={styles.linkContainer}>
-                  <TouchableOpacity
-                    style={styles.linkWrapperStyle}
-                    onPress={() => {
-                      props.navigation.navigate('Group');
-                    }}>
-                    <Text style={styles.linkStyle}>Launch</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
+          {/*<View style={styles.componentStyle}>*/}
+          {/*  <View style={styles.boxStyle}>*/}
+          {/*    <View style={styles.boxContent}>*/}
+          {/*      <View style={styles.titleWrapperStyle}>*/}
+          {/*        <Text style={styles.componentTitleStyle}>Groups</Text>*/}
+          {/*      </View>*/}
+          {/*      <View style={styles.descWrapperStyle}>*/}
+          {/*        <Text>*/}
+          {/*          The*/}
+          {/*          <Text style={styles.descTextColor}>*/}
+          {/*            {' '}*/}
+          {/*            CometChatGroupListWithMessages*/}
+          {/*          </Text>{' '}*/}
+          {/*          component launches a Group list with messaging.*/}
+          {/*        </Text>*/}
+          {/*      </View>*/}
+          {/*      <View style={styles.linkContainer}>*/}
+          {/*        <TouchableOpacity*/}
+          {/*          style={styles.linkWrapperStyle}*/}
+          {/*          onPress={() => {*/}
+          {/*            props.navigation.navigate('Group');*/}
+          {/*          }}>*/}
+          {/*          <Text style={styles.linkStyle}>Launch</Text>*/}
+          {/*        </TouchableOpacity>*/}
+          {/*      </View>*/}
+          {/*    </View>*/}
+          {/*  </View>*/}
 
-            <View style={styles.componentStyle}>
-              <View style={styles.boxStyle}>
-                <View style={styles.boxContent}>
-                  <View style={styles.titleWrapperStyle}>
-                    <Text style={styles.componentTitleStyle}>Users</Text>
-                  </View>
-                  <View style={styles.descWrapperStyle}>
-                    <Text>
-                      The{' '}
-                      <Text style={styles.descTextColor}>
-                        CometChatUserListWithMessages
-                      </Text>{' '}
-                      component launches a User list with messaging.
-                    </Text>
-                  </View>
-                  <View style={styles.linkContainer}>
-                    <TouchableOpacity
-                      style={styles.linkWrapperStyle}
-                      onPress={() => {
-                        props.navigation.navigate('Users');
-                      }}>
-                      <Text style={styles.linkStyle}>Launch</Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View style={styles.componentStyle}>
-            <View style={styles.boxStyle}>
-              <View style={styles.boxContent}>
-                <View style={styles.titleWrapperStyle}>
-                  <Text style={styles.componentTitleStyle}>
-                    Conversation List
-                  </Text>
-                </View>
-                <View style={styles.descWrapperStyle}>
-                  <Text>
-                    The{' '}
-                    <Text style={styles.descTextColor}>
-                      CometChatConversationList
-                    </Text>{' '}
-                    component launches Conversation list.
-                  </Text>
-                </View>
-                <View style={styles.linkContainer}>
-                  <TouchableOpacity
-                    style={styles.linkWrapperStyle}
-                    onPress={() => {
-                      props.navigation.navigate('ConversationComponent');
-                    }}>
-                    <Text style={styles.linkStyle}>Launch</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View style={styles.componentStyle}>
-            <View style={styles.boxStyle}>
-              <View style={styles.boxContent}>
-                <View style={styles.titleWrapperStyle}>
-                  <Text style={styles.componentTitleStyle}>Group List</Text>
-                </View>
-                <View style={styles.descWrapperStyle}>
-                  <Text>
-                    The{' '}
-                    <Text style={styles.descTextColor}>CometChatGroupList</Text>{' '}
-                    component launches Group list.
-                  </Text>
-                </View>
-                <View style={styles.linkContainer}>
-                  <TouchableOpacity
-                    style={styles.linkWrapperStyle}
-                    onPress={() => {
-                      props.navigation.navigate('GroupComponent');
-                    }}>
-                    <Text style={styles.linkStyle}>Launch</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View style={styles.componentStyle}>
-            <View style={styles.boxStyle}>
-              <View style={styles.boxContent}>
-                <View style={styles.titleWrapperStyle}>
-                  <Text style={styles.componentTitleStyle}>User List</Text>
-                </View>
-                <View style={styles.descWrapperStyle}>
-                  <Text>
-                    The{' '}
-                    <Text style={styles.descTextColor}>CometChatUserList</Text>{' '}
-                    component launches User list.
-                  </Text>
-                </View>
-                <View style={styles.linkContainer}>
-                  <TouchableOpacity
-                    style={styles.linkWrapperStyle}
-                    onPress={() => {
-                      props.navigation.navigate('UsersComponent');
-                    }}>
-                    <Text style={styles.linkStyle}>Launch</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
-          </View>
+          {/*  <View style={styles.componentStyle}>*/}
+          {/*    <View style={styles.boxStyle}>*/}
+          {/*      <View style={styles.boxContent}>*/}
+          {/*        <View style={styles.titleWrapperStyle}>*/}
+          {/*          <Text style={styles.componentTitleStyle}>Users</Text>*/}
+          {/*        </View>*/}
+          {/*        <View style={styles.descWrapperStyle}>*/}
+          {/*          <Text>*/}
+          {/*            The{' '}*/}
+          {/*            <Text style={styles.descTextColor}>*/}
+          {/*              CometChatUserListWithMessages*/}
+          {/*            </Text>{' '}*/}
+          {/*            component launches a User list with messaging.*/}
+          {/*          </Text>*/}
+          {/*        </View>*/}
+          {/*        <View style={styles.linkContainer}>*/}
+          {/*          <TouchableOpacity*/}
+          {/*            style={styles.linkWrapperStyle}*/}
+          {/*            onPress={() => {*/}
+          {/*              props.navigation.navigate('Users');*/}
+          {/*            }}>*/}
+          {/*            <Text style={styles.linkStyle}>Launch</Text>*/}
+          {/*          </TouchableOpacity>*/}
+          {/*        </View>*/}
+          {/*      </View>*/}
+          {/*    </View>*/}
+          {/*  </View>*/}
+          {/*</View>*/}
+          {/*<View style={styles.componentStyle}>*/}
+          {/*  <View style={styles.boxStyle}>*/}
+          {/*    <View style={styles.boxContent}>*/}
+          {/*      <View style={styles.titleWrapperStyle}>*/}
+          {/*        <Text style={styles.componentTitleStyle}>*/}
+          {/*          Conversation List*/}
+          {/*        </Text>*/}
+          {/*      </View>*/}
+          {/*      <View style={styles.descWrapperStyle}>*/}
+          {/*        <Text>*/}
+          {/*          The{' '}*/}
+          {/*          <Text style={styles.descTextColor}>*/}
+          {/*            CometChatConversationList*/}
+          {/*          </Text>{' '}*/}
+          {/*          component launches Conversation list.*/}
+          {/*        </Text>*/}
+          {/*      </View>*/}
+          {/*      <View style={styles.linkContainer}>*/}
+          {/*        <TouchableOpacity*/}
+          {/*          style={styles.linkWrapperStyle}*/}
+          {/*          onPress={() => {*/}
+          {/*            props.navigation.navigate('ConversationComponent');*/}
+          {/*          }}>*/}
+          {/*          <Text style={styles.linkStyle}>Launch</Text>*/}
+          {/*        </TouchableOpacity>*/}
+          {/*      </View>*/}
+          {/*    </View>*/}
+          {/*  </View>*/}
+          {/*</View>*/}
+          {/*<View style={styles.componentStyle}>*/}
+          {/*  <View style={styles.boxStyle}>*/}
+          {/*    <View style={styles.boxContent}>*/}
+          {/*      <View style={styles.titleWrapperStyle}>*/}
+          {/*        <Text style={styles.componentTitleStyle}>Group List</Text>*/}
+          {/*      </View>*/}
+          {/*      <View style={styles.descWrapperStyle}>*/}
+          {/*        <Text>*/}
+          {/*          The{' '}*/}
+          {/*          <Text style={styles.descTextColor}>CometChatGroupList</Text>{' '}*/}
+          {/*          component launches Group list.*/}
+          {/*        </Text>*/}
+          {/*      </View>*/}
+          {/*      <View style={styles.linkContainer}>*/}
+          {/*        <TouchableOpacity*/}
+          {/*          style={styles.linkWrapperStyle}*/}
+          {/*          onPress={() => {*/}
+          {/*            props.navigation.navigate('GroupComponent');*/}
+          {/*          }}>*/}
+          {/*          <Text style={styles.linkStyle}>Launch</Text>*/}
+          {/*        </TouchableOpacity>*/}
+          {/*      </View>*/}
+          {/*    </View>*/}
+          {/*  </View>*/}
+          {/*</View>*/}
+          {/*<View style={styles.componentStyle}>*/}
+          {/*  <View style={styles.boxStyle}>*/}
+          {/*    <View style={styles.boxContent}>*/}
+          {/*      <View style={styles.titleWrapperStyle}>*/}
+          {/*        <Text style={styles.componentTitleStyle}>User List</Text>*/}
+          {/*      </View>*/}
+          {/*      <View style={styles.descWrapperStyle}>*/}
+          {/*        <Text>*/}
+          {/*          The{' '}*/}
+          {/*          <Text style={styles.descTextColor}>CometChatUserList</Text>{' '}*/}
+          {/*          component launches User list.*/}
+          {/*        </Text>*/}
+          {/*      </View>*/}
+          {/*      <View style={styles.linkContainer}>*/}
+          {/*        <TouchableOpacity*/}
+          {/*          style={styles.linkWrapperStyle}*/}
+          {/*          onPress={() => {*/}
+          {/*            props.navigation.navigate('UsersComponent');*/}
+          {/*          }}>*/}
+          {/*          <Text style={styles.linkStyle}>Launch</Text>*/}
+          {/*        </TouchableOpacity>*/}
+          {/*      </View>*/}
+          {/*    </View>*/}
+          {/*  </View>*/}
+          {/*</View>*/}
           <TouchableOpacity
             style={styles.logoutBtn}
             onPress={() => props.dispatch(actions.logout())}>
