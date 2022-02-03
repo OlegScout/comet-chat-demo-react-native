@@ -7,7 +7,7 @@ import { CometChatUserListWithMessages } from '../Users';
 import { CometChatConversationListWithMessages } from '../Chats';
 import { CometChatContextProvider } from '../../utils/CometChatContext';
 import { CometChatUserProfile } from '../UserProfile';
-import ShopifyWebView from '../ShopifyWebView';
+import ShopifyWebView from '../../../../components/ShopifyWebView';
 // import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 // import MCIIcons from 'react-native-vector-icons/MaterialCommunityIcons';
