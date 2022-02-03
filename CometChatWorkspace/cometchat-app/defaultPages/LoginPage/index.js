@@ -63,15 +63,16 @@ class LoginPage extends React.PureComponent {
     }
 
     return (
-      <KeyboardAvoidingView style={{flex: 1}}>
+      <SafeAreaView style={{flex: 1}}>
+        <KeyboardAvoidingView style={{flex: 1}}>
         {loader}
 
         <ScrollView>
           <View style={style.wrapperStyle}>
             {errorMessage}
-            <Text style={style.titleStyle}>CometChat App</Text>
+            <Text style={style.titleStyle}>GoSource</Text>
             <Text style={style.subtitleStyle}>
-              Login with one of our sample users
+              Login with one of our preinstalled users
             </Text>
             <View style={style.userContainerStyle}>
               <TouchableOpacity
@@ -85,7 +86,7 @@ class LoginPage extends React.PureComponent {
                     }}
                   />
                 </View>
-                <Text style={style.btnText}>superhero1</Text>
+                <Text style={style.btnText}>Shahar</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={style.userWrapperStyle}
@@ -98,7 +99,7 @@ class LoginPage extends React.PureComponent {
                     }}
                   />
                 </View>
-                <Text style={style.btnText}>superhero2</Text>
+                <Text style={style.btnText}>Ori</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={style.userWrapperStyle}
@@ -111,7 +112,7 @@ class LoginPage extends React.PureComponent {
                     }}
                   />
                 </View>
-                <Text style={style.btnText}>superhero3</Text>
+                <Text style={style.btnText}>Amir</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={style.userWrapperStyle}
@@ -124,7 +125,7 @@ class LoginPage extends React.PureComponent {
                     }}
                   />
                 </View>
-                <Text style={style.btnText}>superhero4</Text>
+                <Text style={style.btnText}>Yaroslav</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={style.userWrapperStyle}
@@ -137,24 +138,24 @@ class LoginPage extends React.PureComponent {
                     }}
                   />
                 </View>
-                <Text style={style.btnText}>superhero5</Text>
+                <Text style={style.btnText}>Alexandra</Text>
               </TouchableOpacity>
             </View>
             <View style={style.uidWrapperStyle}>
-              <View>
-                <Text style={style.subtitleStyle}> Login with UID</Text>
-              </View>
-              <View style={style.inputWrapperStyle}>
-                <TextInput
-                  style={style.textInput}
-                  // ref={this.myRef}
-                  onSubmitEditing={() => this.login('', true)}
-                  onChangeText={(value) => {
-                    this.setState({uid: value});
-                  }}
-                  placeholder="Enter your UID here"
-                />
-              </View>
+              {/*<View>*/}
+              {/*  <Text style={style.subtitleStyle}> Login with UID</Text>*/}
+              {/*</View>*/}
+              {/*<View style={style.inputWrapperStyle}>*/}
+              {/*  <TextInput*/}
+              {/*    style={style.textInput}*/}
+              {/*    // ref={this.myRef}*/}
+              {/*    onSubmitEditing={() => this.login('', true)}*/}
+              {/*    onChangeText={(value) => {*/}
+              {/*      this.setState({uid: value});*/}
+              {/*    }}*/}
+              {/*    placeholder="Enter your UID here"*/}
+              {/*  />*/}
+              {/*</View>*/}
               <TouchableOpacity
                 style={style.loginBtn}
                 onPress={() => this.login('', true)}>
@@ -168,6 +169,7 @@ class LoginPage extends React.PureComponent {
           />
         </ScrollView>
       </KeyboardAvoidingView>
+      </SafeAreaView>
     );
   }
 }
