@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 import LoginPage from './defaultPages/LoginPage';
 import HomePage from './defaultPages/HomePage';
 import {
-  CometChatUserProfile,
   CometChatUI,
   CometChatMessages,
   CometChatUserListWithMessages,
@@ -16,6 +15,7 @@ import {
   CometChatConversationListWithMessages,
   CometChatConversationList,
 } from './cometchat-pro-react-native-ui-kit';
+import GSChatUI from './components/GSChatUI'
 
 function StackNavigator(props) {
   const Stack = createStackNavigator();
@@ -27,6 +27,7 @@ function StackNavigator(props) {
         initialRouteName={props.isLoggedIn ? 'HomePage' : null}>
         <Stack.Screen name="LoginPage" component={LoginPage} />
         <Stack.Screen name="HomePage" component={HomePage} />
+        <Stack.Screen name="GSChatUI" component={GSChatUI} />
         <Stack.Screen name="CometChatUI" component={CometChatUI} />
         <Stack.Screen
           name="Conversation"
