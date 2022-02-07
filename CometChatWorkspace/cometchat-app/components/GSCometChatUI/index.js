@@ -2,12 +2,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import { View, Text } from 'react-native';
-import { CometChatGroupListWithMessages } from '../../cometchat-pro-react-native-ui-kit/src/components/Groups';
-import { CometChatUserListWithMessages } from '../../cometchat-pro-react-native-ui-kit/src/components/Users';
-// import { CometChatConversationListWithMessages } from '../../cometchat-pro-react-native-ui-kit/src/components/Chats';
-import GSConversationListWithMessages from '../GSConversationListWithMessages';
+import { CometChatGroupListWithMessages } from '../Groups';
+import { CometChatUserListWithMessages } from '../Users';
+import { CometChatConversationListWithMessages } from '../Chats';
 import { CometChatContextProvider } from '../../cometchat-pro-react-native-ui-kit/src/utils/CometChatContext';
-import { CometChatUserProfile } from '../../cometchat-pro-react-native-ui-kit/src/components/UserProfile';
+import { CometChatUserProfile } from '../UserProfile';
 import ShopifyWebView from '../ShopifyWebView';
 // import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -17,7 +16,7 @@ import { heightRatio } from '../../cometchat-pro-react-native-ui-kit/src/utils/c
 
 const Tab = createBottomTabNavigator();
 
-function GSChatUI() {
+function GSCometChatUI() {
   const [tabs, setTabs] = useState(null);
   const contextRef = useRef(null);
 
@@ -112,7 +111,7 @@ function GSChatUI() {
           {tabs.isChatEnabled && (
             <Tab.Screen
               name="Projects"
-              component={GSConversationListWithMessages}
+              component={CometChatConversationListWithMessages}
             />
           )}
           {tabs.isUserListEnabled && (
@@ -140,4 +139,4 @@ function GSChatUI() {
   );
 }
 
-export default GSChatUI;
+export default GSCometChatUI;
