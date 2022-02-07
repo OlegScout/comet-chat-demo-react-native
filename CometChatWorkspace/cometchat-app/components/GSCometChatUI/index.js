@@ -1,12 +1,11 @@
 /* eslint-disable import/no-duplicates */
 import React, { useEffect, useRef, useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import { View, Text } from 'react-native';
-import { CometChatGroupListWithMessages } from '../Groups';
-import { CometChatUserListWithMessages } from '../Users';
-import { CometChatConversationListWithMessages } from '../Chats';
+import { CometChatGroupListWithMessages } from '../../cometchat-pro-react-native-ui-kit/src/components/Groups';
+import { CometChatUserListWithMessages } from '../../cometchat-pro-react-native-ui-kit/src/components/Users';
+import { CometChatConversationListWithMessages } from '../../cometchat-pro-react-native-ui-kit/src/components/Chats';
 import { CometChatContextProvider } from '../../cometchat-pro-react-native-ui-kit/src/utils/CometChatContext';
-import { CometChatUserProfile } from '../UserProfile';
+import { CometChatUserProfile } from '../../cometchat-pro-react-native-ui-kit/src/components/UserProfile';
 import ShopifyWebView from '../ShopifyWebView';
 // import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -43,8 +42,6 @@ function GSCometChatUI() {
         <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarIcon: ({ color }) => {
-              // let iconName;
-
               if (route.name === 'Projects') {
                 return (
                   <MaterialIcons
@@ -90,15 +87,6 @@ function GSCometChatUI() {
                   />
                 );
               }
-
-              // You can return any component that you like here!
-              // return (
-              //   <Ionicons
-              //     name={iconName}
-              //     size={24 * heightRatio}
-              //     color={color}
-              //   />
-              // );
             },
           })}
           tabBarOptions={{
