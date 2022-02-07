@@ -6,15 +6,16 @@ import { CometChatManager } from '../../../cometchat-pro-react-native-ui-kit/src
 import * as enums from '../../../cometchat-pro-react-native-ui-kit/src/utils/enums';
 import DropDownAlert from '../../../cometchat-pro-react-native-ui-kit/src/components/Shared/DropDownAlert';
 import * as actions from '../../../cometchat-pro-react-native-ui-kit/src/utils/actions';
-import CometChatConversationList from '../../../cometchat-pro-react-native-ui-kit/src/components/Chats/CometChatConversationList';
+// import CometChatConversationList from '../../../cometchat-pro-react-native-ui-kit/src/components/Chats/CometChatConversationList';
+import GSCometChatConversationList from '../GSCometChatConversationList';
 import {
   CometChatIncomingCall,
   CometChatOutgoingCall,
   CometChatOutgoingDirectCall,
   CometChatIncomingDirectCall,
-} from '../../Calls';
+} from '../../../cometchat-pro-react-native-ui-kit/src/components/Calls';
 import { CometChatContextProvider } from '../../../cometchat-pro-react-native-ui-kit/src/utils/CometChatContext';
-import { CometChatImageViewer } from '../../Messages';
+import { CometChatImageViewer } from '../../../cometchat-pro-react-native-ui-kit/src/components/Messages';
 import theme from '../../../cometchat-pro-react-native-ui-kit/src/resources/theme';
 import { View } from 'react-native';
 import { logger } from '../../../cometchat-pro-react-native-ui-kit/src/utils/common';
@@ -592,7 +593,7 @@ class GSCometChatConversationListWithMessages extends React.Component {
       <CometChatContextProvider ref={(el) => (this.contextProviderRef = el)}>
         <View style={{}}>
           <View style={{}}>
-            <CometChatConversationList
+            <GSCometChatConversationList
               theme={this.theme}
               item={this.state.item}
               type={this.state.type}
