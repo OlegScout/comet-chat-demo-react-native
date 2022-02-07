@@ -3,21 +3,21 @@
 import React from 'react';
 import { CometChat } from '@cometchat-pro/react-native-chat';
 import { CometChatManager } from '../../../cometchat-pro-react-native-ui-kit/src/utils/controller';
-import * as enums from '../../../utils/enums';
-import DropDownAlert from '../../Shared/DropDownAlert';
-import * as actions from '../../../utils/actions';
-import CometChatConversationList from '../CometChatConversationList';
+import * as enums from '../../../cometchat-pro-react-native-ui-kit/src/utils/enums';
+import DropDownAlert from '../../../cometchat-pro-react-native-ui-kit/src/components/Shared/DropDownAlert';
+import * as actions from '../../../cometchat-pro-react-native-ui-kit/src/utils/actions';
+import CometChatConversationList from '../../../cometchat-pro-react-native-ui-kit/src/components/Chats/CometChatConversationList';
 import {
   CometChatIncomingCall,
   CometChatOutgoingCall,
   CometChatOutgoingDirectCall,
   CometChatIncomingDirectCall,
 } from '../../Calls';
-import { CometChatContextProvider } from '../../../utils/CometChatContext';
+import { CometChatContextProvider } from '../../../cometchat-pro-react-native-ui-kit/src/utils/CometChatContext';
 import { CometChatImageViewer } from '../../Messages';
-import theme from '../../../resources/theme';
+import theme from '../../../cometchat-pro-react-native-ui-kit/src/resources/theme';
 import { View } from 'react-native';
-import { logger } from '../../../utils/common';
+import { logger } from '../../../cometchat-pro-react-native-ui-kit/src/utils/common';
 
 const readAt = 'readAt';
 
