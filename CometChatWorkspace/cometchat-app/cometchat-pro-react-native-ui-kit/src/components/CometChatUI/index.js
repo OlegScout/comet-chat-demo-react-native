@@ -1,16 +1,15 @@
 /* eslint-disable import/no-duplicates */
 import React, { useEffect, useRef, useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import { View, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { CometChatGroupListWithMessages } from '../Groups';
 import { CometChatUserListWithMessages } from '../Users';
 import { CometChatConversationListWithMessages } from '../Chats';
 import { CometChatContextProvider } from '../../utils/CometChatContext';
 import { CometChatUserProfile } from '../UserProfile';
-import ShopifyWebView from '../../../../components/ShopifyWebView';
-// import Ionicons from 'react-native-vector-icons/Ionicons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-// import MCIIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MCIIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import theme from '../../resources/theme';
 import { heightRatio } from '../../utils/consts';
 
@@ -43,62 +42,36 @@ function CometChatUI() {
         <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarIcon: ({ color }) => {
-              // let iconName;
+              let iconName;
 
-              if (route.name === 'Projects') {
+              if (route.name === 'Chats') {
+                return (
+                  <MCIIcons name="chat" size={25 * heightRatio} color={color} />
+                );
+              }
+              if (route.name === 'More') {
                 return (
                   <MaterialIcons
-                    name="chat"
-                    size={15 * heightRatio}
+                    name="more-horiz"
+                    size={25 * heightRatio}
                     color={color}
                   />
                 );
               }
-              if (route.name === 'Settings') {
-                return (
-                  <MaterialIcons
-                    name="settings"
-                    size={15 * heightRatio}
-                    color={color}
-                  />
-                );
-              }
-              if (route.name === 'Calls (Users)') {
-                return (
-                  <MaterialIcons
-                    name="call"
-                    size={15 * heightRatio}
-                    color={color}
-                  />
-                );
-              }
-              if (route.name === 'Cart (Groups)') {
-                return (
-                  <MaterialIcons
-                    name="shopping-cart"
-                    size={15 * heightRatio}
-                    color={color}
-                  />
-                );
-              }
-              if (route.name === 'Shop') {
-                return (
-                  <MaterialIcons
-                    name="shopping-bag"
-                    size={15 * heightRatio}
-                    color={color}
-                  />
-                );
+              if (route.name === 'Users') {
+                iconName = 'ios-person-circle-sharp';
+              } else if (route.name === 'Groups') {
+                iconName = 'people';
               }
 
               // You can return any component that you like here!
-              // return (
-              //   <Ionicons
-              //     name={iconName}
-              //     size={24 * heightRatio}
-              //     color={color}
-              //   />
-              // );
+              return (
+                <Ionicons
+                  name={iconName}
+                  size={24 * heightRatio}
+                  color={color}
+                />
+              );
             },
           })}
           tabBarOptions={{
@@ -110,28 +83,24 @@ function CometChatUI() {
           }}>
           {tabs.isChatEnabled && (
             <Tab.Screen
-              name="Projects"
+              name="Chats"
               component={CometChatConversationListWithMessages}
             />
           )}
           {tabs.isUserListEnabled && (
             <Tab.Screen
-              name="Calls (Users)"
+              name="Users"
               component={CometChatUserListWithMessages}
             />
           )}
-          <Tab.Screen
-            name="Shop"
-            component={ShopifyWebView}
-          />
           {tabs.isGroupListEnabled && (
             <Tab.Screen
-              name="Cart (Groups)"
+              name="Groups"
               component={CometChatGroupListWithMessages}
             />
           )}
           {tabs.isUserSettingsEnabled && (
-            <Tab.Screen name="Settings" component={CometChatUserProfile} />
+            <Tab.Screen name="More" component={CometChatUserProfile} />
           )}
         </Tab.Navigator>
       ) : null}
