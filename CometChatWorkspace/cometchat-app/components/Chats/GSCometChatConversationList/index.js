@@ -6,7 +6,7 @@ import { CometChat } from '@cometchat-pro/react-native-chat';
 import { CometChatManager } from '../../../cometchat-pro-react-native-ui-kit/src/utils/controller';
 import { ConversationListManager } from '../../../cometchat-pro-react-native-ui-kit/src/components/Chats/CometChatConversationList/controller';
 import * as enums from '../../../cometchat-pro-react-native-ui-kit/src/utils/enums';
-import CometChatConversationListItem from '../../../cometchat-pro-react-native-ui-kit/src/components/Chats/CometChatConversationListItem';
+import GSCometChatConversationListItem from '../GSCometChatConversationListItem';
 // import CometChatUserListWithMessages from '../../../cometchat-pro-react-native-ui-kit/src/components/Users/CometChatUserListWithMessages';
 import theme from '../../../cometchat-pro-react-native-ui-kit/src/resources/theme';
 import styles from './styles';
@@ -1023,7 +1023,7 @@ class GSCometChatConversationList extends React.Component {
               previewOpenDelay={3000}
               renderItem={({ item }) => {
                 return (
-                  <CometChatConversationListItem
+                  <GSCometChatConversationListItem
                     theme={this.theme}
                     config={this.props.config}
                     conversation={item}
