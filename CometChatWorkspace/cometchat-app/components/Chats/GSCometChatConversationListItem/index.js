@@ -1,18 +1,18 @@
 /* eslint-disable react/no-did-update-set-state */
 import React from 'react';
 import { CometChat } from '@cometchat-pro/react-native-chat';
-import * as enums from '../../../utils/enums';
+import * as enums from '../../../cometchat-pro-react-native-ui-kit/src/utils/enums';
 import {
   CometChatUserPresence,
   CometChatBadgeCount,
   CometChatAvatar,
-} from '../../Shared';
+} from '../../../cometchat-pro-react-native-ui-kit/src/components/Shared';
 
 import styles from './styles';
 import { View, TouchableOpacity, Text } from 'react-native';
 import { Platform } from 'react-native';
-import { logger } from '../../../utils/common';
-import { CometChatContext } from '../../../utils/CometChatContext';
+import { logger } from '../../../cometchat-pro-react-native-ui-kit/src/utils/common';
+import { CometChatContext } from '../../../cometchat-pro-react-native-ui-kit/src/utils/CometChatContext';
 
 const conversation = 'conversation';
 const lastMessage = 'lastMessage';

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { widthRatio } from '../../../utils/consts';
-import theme from '../../../resources/theme';
+import { widthRatio } from '../../../cometchat-pro-react-native-ui-kit/src/utils/consts';
+import theme from '../../../cometchat-pro-react-native-ui-kit/src/resources/theme';
 
 export default StyleSheet.create({
   listItem: {
