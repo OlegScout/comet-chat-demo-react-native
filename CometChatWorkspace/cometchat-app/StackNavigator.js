@@ -15,7 +15,7 @@ import {
   CometChatConversationListWithMessages,
   CometChatConversationList,
 } from './cometchat-pro-react-native-ui-kit';
-import GSChatUI from './components/GSChatUI'
+import GSCometChatUI from './components/GSCometChatUI'
 
 function StackNavigator(props) {
   const Stack = createStackNavigator();
@@ -27,7 +27,7 @@ function StackNavigator(props) {
         initialRouteName={props.isLoggedIn ? 'HomePage' : null}>
         <Stack.Screen name="LoginPage" component={LoginPage} />
         <Stack.Screen name="HomePage" component={HomePage} />
-        <Stack.Screen name="GSChatUI" component={GSChatUI} />
+        <Stack.Screen name="GSCometChatUI" component={GSCometChatUI} />
         <Stack.Screen name="CometChatUI" component={CometChatUI} />
         <Stack.Screen
           name="Conversation"
