@@ -263,7 +263,7 @@ export default class ComposerActions extends Component {
         <IonIcon name="ios-folder-outline" size={24} />
 
         <Text style={{ fontSize: 18, marginLeft: 10, fontWeight: '500' }}>
-          Document
+          Invoice
         </Text>
       </TouchableOpacity>
     );

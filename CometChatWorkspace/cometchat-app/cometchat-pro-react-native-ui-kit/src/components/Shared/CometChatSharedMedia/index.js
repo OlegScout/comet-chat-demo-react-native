@@ -191,7 +191,7 @@ export default class CometChatSharedMedia extends React.Component {
       return 'Photos';
     }
     if (this.state.messageType === CometChat.MESSAGE_TYPE.FILE) {
-      return 'Docs';
+      return 'Invoices';
     }
     return 'Videos';
   };
@@ -347,7 +347,7 @@ export default class CometChatSharedMedia extends React.Component {
                   ? styles.activeButtonStyle
                   : styles.buttonStyle,
               ]}>
-              <Text style={styles.buttonTextStyle}>Docs</Text>
+              <Text style={styles.buttonTextStyle}>Invoices</Text>
             </TouchableOpacity>
           </View>
           <FlatList
