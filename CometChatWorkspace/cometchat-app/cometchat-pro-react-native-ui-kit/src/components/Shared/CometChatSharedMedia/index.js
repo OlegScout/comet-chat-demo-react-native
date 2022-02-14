@@ -312,6 +312,20 @@ export default class CometChatSharedMedia extends React.Component {
           <View style={styles.mediaBtnStyle}>
             <TouchableOpacity
               onPress={() =>
+                this.mediaClickHandler(CometChat.MESSAGE_TYPE.FILE)
+              }
+              style={[
+                messageType === CometChat.MESSAGE_TYPE.FILE
+                  ? styles.activeButtonStyle
+                  : styles.buttonStyle,
+              ]}>
+              <Text style={styles.buttonTextStyle}>Invoices</Text>
+            </TouchableOpacity>
+            {messageType === CometChat.MESSAGE_TYPE.VIDEO ? (
+              <View style={styles.separator} />
+            ) : null}
+            <TouchableOpacity
+              onPress={() =>
                 this.mediaClickHandler(CometChat.MESSAGE_TYPE.IMAGE)
               }
               style={[
@@ -334,20 +348,6 @@ export default class CometChatSharedMedia extends React.Component {
                   : styles.buttonStyle
               }>
               <Text style={styles.buttonTextStyle}>Videos</Text>
-            </TouchableOpacity>
-            {messageType === CometChat.MESSAGE_TYPE.IMAGE ? (
-              <View style={styles.separator} />
-            ) : null}
-            <TouchableOpacity
-              onPress={() =>
-                this.mediaClickHandler(CometChat.MESSAGE_TYPE.FILE)
-              }
-              style={[
-                messageType === CometChat.MESSAGE_TYPE.FILE
-                  ? styles.activeButtonStyle
-                  : styles.buttonStyle,
-              ]}>
-              <Text style={styles.buttonTextStyle}>Invoices</Text>
             </TouchableOpacity>
           </View>
           <FlatList

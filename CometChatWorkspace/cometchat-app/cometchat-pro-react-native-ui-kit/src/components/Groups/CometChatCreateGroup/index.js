@@ -225,7 +225,7 @@ class CometChatCreateGroup extends React.Component {
                     <View style={style.modalTableStyle}>
                       <View style={style.modalHeader}>
                         <Text style={style.tableCaptionStyle}>
-                          Create Group
+                          New Project
                         </Text>
                         <TouchableOpacity
                           style={style.closeBtn}

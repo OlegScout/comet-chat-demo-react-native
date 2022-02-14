@@ -25,21 +25,34 @@ import {
   KeyboardAvoidingView,
   Platform,
   Image,
-  TouchableOpacity,
+  TouchableOpacity, Modal, TouchableWithoutFeedback, Keyboard, TextInput,
 } from 'react-native';
 import { logger } from '../../../cometchat-pro-react-native-ui-kit/src/utils/common';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import Icon2 from "react-native-vector-icons/FontAwesome5";
+
+import CometChatCreateGroup from '../../../cometchat-pro-react-native-ui-kit/src/components/Groups/CometChatCreateGroup';
+import * as actions from "../../../cometchat-pro-react-native-ui-kit/src/utils/actions";
+import BottomSheet from "reanimated-bottom-sheet";
+import {deviceHeight, heightRatio} from "../../../cometchat-pro-react-native-ui-kit/src/utils/consts";
+import Icon from "react-native-vector-icons/Ionicons";
+
 class GSCometChatConversationList extends React.Component {
   loggedInUser = null;
 
   decoratorMessage = 'Loading...';
   static contextType = CometChatContext;
+
+  addIcon = (<Icon2 name="edit" size={24} color={theme.color.blue} />);
+
+  createGroup = this.addIcon;
+
   constructor(props) {
     super(props);
 
     this.state = {
       conversationList: [],
+      createGroup: false,
       selectedConversation: undefined,
       showSmallHeader: false,
       isMessagesSoundEnabled: true,
@@ -81,7 +94,18 @@ class GSCometChatConversationList extends React.Component {
   checkRestrictions = async () => {
     let isMessagesSoundEnabled =
       await this.context.FeatureRestriction.isMessagesSoundEnabled();
-    this.setState({ isMessagesSoundEnabled });
+    let context = this.contextProviderRef.state;
+    let isGroupSearchEnabled = await context.FeatureRestriction.isGroupSearchEnabled();
+    let isGroupCreationEnabled = await context.FeatureRestriction.isGroupCreationEnabled();
+    let isJoinLeaveGroupsEnabled = await context.FeatureRestriction.isJoinLeaveGroupsEnabled();
+    this.setState({
+      isMessagesSoundEnabled,
+      restrictions: {
+        isGroupSearchEnabled,
+        isGroupCreationEnabled,
+        isJoinLeaveGroupsEnabled,
+      },
+    });
   };
 
   componentDidUpdate(prevProps) {
@@ -818,6 +842,126 @@ class GSCometChatConversationList extends React.Component {
   };
 
   /**
+   * adds project members by default
+   * @param group: group object
+   */
+  addGroupMembersByDefault = (group) => {
+    let GUID = group.guid;
+
+    // Shahar's user account id.
+    let adminUser1 =  'superhero1';
+    // Ori's user account id.
+    let adminUser2 =  'superhero2';
+
+    const groupMember = (uid) => {
+      return new CometChat.GroupMember(uid, CometChat.GROUP_MEMBER_SCOPE.ADMIN)
+    }
+
+    let membersList = [
+      groupMember(adminUser1),
+      groupMember(adminUser2)
+    ];
+
+    CometChat.addMembersToGroup(GUID, membersList, []).then(
+      response => {
+        console.log("Project Member added successfully:", response);
+      }, error => {
+        console.log("Project Member addition failed with exception:", error);
+      }
+    );
+  }
+
+  /**
+   * handles what to display when a specific group item from groupList is clicked
+   * @param group: group object
+   */
+
+  handleClickGroup = (group) => {
+    //handle click here
+    if (!this.props.onItemClick) return;
+
+    if (group.hasJoined === false) {
+      if (this.state.restrictions?.isJoinLeaveGroupsEnabled === false) {
+        return false;
+      }
+      if (group.type === CometChat.GROUP_TYPE.PASSWORD) {
+        this.setState({
+          showPasswordScreen: true,
+          guid: group.guid,
+          groupType: group.type,
+        });
+      }
+      if (group.type === CometChat.GROUP_TYPE.PUBLIC) {
+        CometChat.joinGroup(group.guid, group.type, '')
+          .then((response) => {
+            const groups = [...this.state.grouplist];
+            if (typeof response === 'object') {
+              this.dropDownAlertRef?.showMessage(
+                'success',
+                'Group Joined Successfully',
+              );
+            } else {
+              this.dropDownAlertRef?.showMessage(
+                'error',
+                'Failed to join group',
+              );
+            }
+            const groupKey = groups.findIndex((g) => g.guid === group.guid);
+            if (groupKey > -1) {
+              const groupObj = groups[groupKey];
+              const newGroupObj = {
+                ...groupObj,
+                ...response,
+                scope: CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT,
+              };
+
+              groups.splice(groupKey, 1, newGroupObj);
+              this.setState({ grouplist: groups, selectedGroup: newGroupObj });
+
+              this.props.onItemClick(
+                newGroupObj,
+                CometChat.RECEIVER_TYPE.GROUP,
+              );
+            }
+          })
+          .catch((error) => {
+            const errorCode = error?.message || 'ERROR';
+            this.dropDownAlertRef?.showMessage('error', errorCode);
+            logger('Group joining failed with exception:', error);
+          });
+      }
+    } else {
+      this.setState({ selectedGroup: group });
+      this.props.onItemClick(group, CometChat.RECEIVER_TYPE.GROUP);
+    }
+  };
+
+  /**
+   * sets the createGroup state in order to display the modal for groupCreation.
+   * @param
+   */
+
+  createGroupHandler = (flag) => {
+    this.setState({ createGroup: flag });
+  };
+
+  /**
+   * updates the groupList if new group is created and closes the modal for creating Group.
+   * @param action
+   * @param group
+   */
+
+  createGroupActionHandler = (action, group) => {
+    if (action === actions.GROUP_CREATED) {
+      const conversationList = [...this.state.conversationList];
+
+      this.handleClickGroup(group);
+      this.addGroupMembersByDefault(group);
+      this.setState({ grouplist: conversationList, createGroup: false });
+    }
+  };
+
+  /**
    * Retrieve conversation list according to the logged in user
    * @param
    */
@@ -866,17 +1010,14 @@ class GSCometChatConversationList extends React.Component {
     return (
       <View style={[styles.conversationHeaderStyle]}>
         <View style={styles.headingContainer}>
-          <Text style={styles.conversationHeaderTitleStyle}>Chats ++</Text>
-          {/*{this.state.restrictions?.isGroupCreationEnabled ? (*/}
+          <Text style={styles.conversationHeaderTitleStyle}>{ 'Projects' }</Text>
+          {this.state.restrictions?.isGroupCreationEnabled ? (
             <TouchableOpacity
-              // onPress={() => this.createGroupHandler(true)}
-              // onPress={() => {
-              //   props.navigation.navigate('CometChatUserListWithMessages');
-              // }}
+              onPress={() => this.createGroupHandler(true)}
               style={{ borderRadius: 20 }}>
-              <Icon2 name="edit" size={24} color={theme.color.blue} />
+              {this.createGroup}
             </TouchableOpacity>
-          {/*) : null}*/}
+          ) : null}
         </View>
       </View>
     );
@@ -972,6 +1113,124 @@ class GSCometChatConversationList extends React.Component {
   };
 
   render() {
+    let passwordScreen = null;
+    if (this.state.showPasswordScreen) {
+      passwordScreen = (
+        <Modal
+          transparent
+          animated
+          animationType="fade"
+          visible={this.state.showPasswordScreen}>
+          <View style={styles.passwordScreenContainer}>
+            <BottomSheet
+              snapPoints={[deviceHeight - 350 * heightRatio, 0]}
+              borderRadius={30}
+              initialSnap={0}
+              enabledInnerScrolling={false}
+              enabledContentTapInteraction={false}
+              overdragResistanceFactor={10}
+              renderContent={() => {
+                return (
+                  <TouchableWithoutFeedback
+                    onPress={() => {
+                      Keyboard.dismiss();
+                    }}>
+                    <View style={styles.passwordScreenMainContainer}>
+                      <View style={styles.passwordScreenInnerContainer}>
+                        <View style={styles.closeContainer}>
+                          <TouchableOpacity
+                            style={styles.closeBtn}
+                            onPress={() => {
+                              this.setState({ showPasswordScreen: false });
+                            }}>
+                            <Text
+                              style={[
+                                styles.closeText,
+                                {
+                                  color: this.theme.backgroundColor.blue,
+                                },
+                              ]}>
+                              Close
+                            </Text>
+                          </TouchableOpacity>
+                        </View>
+                        <Text style={styles.passwordScreenHeader}>
+                          Password Required!
+                        </Text>
+                        <View
+                          style={[
+                            styles.detailsContainer,
+                            {
+                              borderColor: this.theme.backgroundColor.primary,
+                            },
+                          ]}>
+                          <TextInput
+                            placeholder="Enter password!"
+                            secureTextEntry
+                            style={styles.passwordInput}
+                            autoCompleteType="off"
+                            placeholderTextColor={
+                              this.theme.color.textInputPlaceholder
+                            }
+                            onSubmitEditing={(e) => {
+                              this.joinGroup(e.nativeEvent.text);
+                            }}
+                            onChangeText={(feedback) => {
+                              this.setState({ passwordFeedback: feedback });
+                            }}
+                            numberOfLines={1}
+                          />
+                          <TouchableOpacity
+                            onPress={() => {
+                              this.joinGroup(this.state.passwordFeedback);
+                            }}
+                            style={styles.enterBtn}>
+                            <Icon
+                              name="enter-outline"
+                              style={{ fontSize: 22 * heightRatio }}
+                              color={this.theme.backgroundColor.blue}
+                            />
+                          </TouchableOpacity>
+                        </View>
+                        <View style={styles.nextBtnContainer}>
+                          <TouchableOpacity
+                            onPress={() => {
+                              this.joinGroup(this.state.passwordFeedback);
+                            }}
+                            style={[
+                              styles.nextBtn,
+                              {
+                                backgroundColor: this.theme.backgroundColor
+                                  .blue,
+                                borderColor: this.theme.backgroundColor.primary,
+                              },
+                            ]}>
+                            <Text style={styles.nextText}>Next</Text>
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+                    </View>
+                  </TouchableWithoutFeedback>
+                );
+              }}
+              onCloseEnd={() => {
+                this.setState({ showPasswordScreen: false });
+              }}
+            />
+          </View>
+          <DropDownAlert ref={(ref) => (this.dropDownAlertModelRef = ref)} />
+        </Modal>
+      );
+    }
+    if (
+      Object.prototype.hasOwnProperty.call(this.props, 'config') &&
+      this.props.config &&
+      Object.prototype.hasOwnProperty.call(this.props, 'group-create') &&
+      this.props.config['group-create'] === false
+    ) {
+      this.createGroup = null;
+    }
+
     return (
       <CometChatContextProvider ref={(el) => (this.contextProviderRef = el)}>
         <SafeAreaView style={{ backgroundColor: 'white' }}>
@@ -1040,6 +1299,13 @@ class GSCometChatConversationList extends React.Component {
               showsVerticalScrollIndicator={false}
               scrollEnabled
             />
+            <CometChatCreateGroup
+              theme={this.theme}
+              open={this.state.createGroup}
+              close={() => this.createGroupHandler(false)}
+              actionGenerated={this.createGroupActionHandler}
+            />
+            {passwordScreen}
           </KeyboardAvoidingView>
           <DropDownAlert ref={(ref) => (this.dropDownAlertRef = ref)} />
         </SafeAreaView>
