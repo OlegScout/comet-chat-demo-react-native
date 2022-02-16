@@ -108,7 +108,6 @@ const CometChatReceiverImageMessageBubble = (props) => {
                     ? thumbnailGenerationObject.url_small
                     : message.data.url,
                 }}
-                resizeMode={FastImage.resizeMode.stretch}
               />
             </TouchableOpacity>
           </View>
