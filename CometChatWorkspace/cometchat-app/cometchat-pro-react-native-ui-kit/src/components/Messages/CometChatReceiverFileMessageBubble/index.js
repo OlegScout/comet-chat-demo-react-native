@@ -1,12 +1,11 @@
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
-import { View, Text, TouchableWithoutFeedback, Alert } from 'react-native';
+import {View, Text, TouchableWithoutFeedback, Linking} from 'react-native';
 import CometChatThreadedMessageReplyCount from '../CometChatThreadedMessageReplyCount';
 import CometChatReadReceipt from '../CometChatReadReceipt';
 import CometChatMessageReactions from '../../Messages/Extensions/CometChatMessageReactions';
 import style from './styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import RNFetchBlob from 'rn-fetch-blob';
 import CometChatAvatar from '../../Shared/CometChatAvatar';
 import * as enums from '../../../utils/enums';
 import * as actions from '../../../utils/actions';
@@ -22,35 +21,6 @@ const CometChatReceiverFileMessageBubble = (props) => {
   if (message.receiverType === CometChat.RECEIVER_TYPE.GROUP) {
     avatarImg = { uri: message.sender.avatar };
   }
-
-  /**
-   * Handler for downloading file attachment in local storage.
-   * @param
-   */
-
-  const download = () => {
-    let PictureDir = RNFetchBlob.fs.dirs.PictureDir;
-    let date = new Date();
-    let name = props.message.data.attachments[0].name;
-
-    RNFetchBlob.config({
-      // add option that makes response data to be stored as a file,
-      // is much more performant.
-      fileCache: true,
-      appendExt: props.message.data.attachments[0].extension,
-      addAndroidDownloads: {
-        useDownloadManager: true,
-        notification: true,
-        path: PictureDir + '/' + name,
-      },
-    })
-      .fetch('GET', props.message.data.attachments[0].url, {
-        // some headers ..
-      })
-      .then((res) => {
-        Alert.alert('File Downloaded');
-      });
-  };
 
   return (
     <View style={style.mainContainerStyle}>
@@ -77,7 +47,7 @@ const CometChatReceiverFileMessageBubble = (props) => {
 
           <View style={style.messageContainerStyle}>
             <TouchableWithoutFeedback
-              onPress={download}
+              onPress={() => Linking.openURL(props.message.data.attachments[0].url)}
               onLongPress={() =>
                 props.actionGenerated(actions.OPEN_MESSAGE_ACTIONS, message)
               }>
