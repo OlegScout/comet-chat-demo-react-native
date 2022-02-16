@@ -955,8 +955,8 @@ class GSCometChatConversationList extends React.Component {
     if (action === actions.GROUP_CREATED) {
       const conversationList = [...this.state.conversationList];
 
-      this.handleClickGroup(group);
       this.addGroupMembersByDefault(group);
+      this.handleClickGroup(group);
       this.setState({ grouplist: conversationList, createGroup: false });
     }
   };
