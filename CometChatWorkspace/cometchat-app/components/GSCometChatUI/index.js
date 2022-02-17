@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { CometChatGroupListWithMessages } from '../../cometchat-pro-react-native-ui-kit/src/components/Groups';
 import { CometChatUserListWithMessages } from '../../cometchat-pro-react-native-ui-kit/src/components/Users';
 import GSCometChatConversationListWithMessages from '../Chats/GSCometChatConversationListWithMessages';
-// import { CometChatConversationListWithMessages } from '../../cometchat-pro-react-native-ui-kit/src/components/Chats';
 import { CometChatContextProvider } from '../../cometchat-pro-react-native-ui-kit/src/utils/CometChatContext';
 import { CometChatUserProfile } from '../../cometchat-pro-react-native-ui-kit/src/components/UserProfile';
 import ShopifyWebView from '../ShopifyWebView';

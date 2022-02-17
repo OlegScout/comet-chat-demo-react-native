@@ -6,7 +6,6 @@ import { CometChatManager } from '../../../cometchat-pro-react-native-ui-kit/src
 import * as enums from '../../../cometchat-pro-react-native-ui-kit/src/utils/enums';
 import DropDownAlert from '../../../cometchat-pro-react-native-ui-kit/src/components/Shared/DropDownAlert';
 import * as actions from '../../../cometchat-pro-react-native-ui-kit/src/utils/actions';
-// import CometChatConversationList from '../../../cometchat-pro-react-native-ui-kit/src/components/Chats/CometChatConversationList';
 import GSCometChatConversationList from '../GSCometChatConversationList';
 import {
   CometChatIncomingCall,

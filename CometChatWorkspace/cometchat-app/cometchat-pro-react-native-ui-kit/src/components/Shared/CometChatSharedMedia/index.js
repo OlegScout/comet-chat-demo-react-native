@@ -312,6 +312,20 @@ export default class CometChatSharedMedia extends React.Component {
           <View style={styles.mediaBtnStyle}>
             <TouchableOpacity
               onPress={() =>
+                this.mediaClickHandler(CometChat.MESSAGE_TYPE.FILE)
+              }
+              style={[
+                messageType === CometChat.MESSAGE_TYPE.FILE
+                  ? styles.activeButtonStyle
+                  : styles.buttonStyle,
+              ]}>
+              <Text style={styles.buttonTextStyle}>{ 'Invoices' }</Text>
+            </TouchableOpacity>
+            {messageType === CometChat.MESSAGE_TYPE.VIDEO ? (
+              <View style={styles.separator} />
+            ) : null}
+            <TouchableOpacity
+              onPress={() =>
                 this.mediaClickHandler(CometChat.MESSAGE_TYPE.IMAGE)
               }
               style={[
@@ -319,7 +333,7 @@ export default class CometChatSharedMedia extends React.Component {
                   ? styles.activeButtonStyle
                   : styles.buttonStyle,
               ]}>
-              <Text style={styles.buttonTextStyle}>Photos</Text>
+              <Text style={styles.buttonTextStyle}>{ 'Photos' }</Text>
             </TouchableOpacity>
             {messageType === CometChat.MESSAGE_TYPE.FILE ? (
               <View style={styles.separator} />
@@ -333,21 +347,7 @@ export default class CometChatSharedMedia extends React.Component {
                   ? styles.activeButtonStyle
                   : styles.buttonStyle
               }>
-              <Text style={styles.buttonTextStyle}>Videos</Text>
-            </TouchableOpacity>
-            {messageType === CometChat.MESSAGE_TYPE.IMAGE ? (
-              <View style={styles.separator} />
-            ) : null}
-            <TouchableOpacity
-              onPress={() =>
-                this.mediaClickHandler(CometChat.MESSAGE_TYPE.FILE)
-              }
-              style={[
-                messageType === CometChat.MESSAGE_TYPE.FILE
-                  ? styles.activeButtonStyle
-                  : styles.buttonStyle,
-              ]}>
-              <Text style={styles.buttonTextStyle}>Invoices</Text>
+              <Text style={styles.buttonTextStyle}>{ 'Videos' }</Text>
             </TouchableOpacity>
           </View>
           <FlatList

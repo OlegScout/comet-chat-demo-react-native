@@ -389,7 +389,7 @@ class GSCometChatConversationListItem extends React.Component {
                 alignItems: 'center',
               }}>
               <Text numberOfLines={1} style={styles.itemNameStyle}>
-                {this.props.conversation.conversationWith.name + ' hello'}
+                {this.props.conversation.conversationWith.name}
               </Text>
               <View style={styles.itemLastMsgStyle}>
                 {lastMessageTimeStamp}

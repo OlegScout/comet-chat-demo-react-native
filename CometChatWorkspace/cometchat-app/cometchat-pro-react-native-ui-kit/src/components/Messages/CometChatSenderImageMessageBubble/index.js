@@ -84,7 +84,6 @@ const CometChatSenderImageMessageBubble = (props) => {
             source={{
               uri: message.data.url,
             }}
-            resizeMode={FastImage.resizeMode.stretch}
           />
         </TouchableOpacity>
       </View>
