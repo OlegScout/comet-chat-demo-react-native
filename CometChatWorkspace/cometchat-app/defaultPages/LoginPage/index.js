@@ -142,20 +142,7 @@ class LoginPage extends React.PureComponent {
               </TouchableOpacity>
               <TouchableOpacity
                 style={style.userWrapperStyle}
-                onPress={() => this.login('oleh')}>
-                <View style={style.thumbnailWrapperStyle}>
-                  <CometChatAvatar
-                    image={{
-                      uri:
-                        'https://olegkruchay.com/public/ok.jpg',
-                    }}
-                  />
-                </View>
-                <Text style={style.btnText}>Oleh</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={style.userWrapperStyle}
-                onPress={() => this.login('dima')}>
+                onPress={() => this.login('daryna')}>
                 <View style={style.thumbnailWrapperStyle}>
                   <CometChatAvatar
                     image={{
@@ -164,24 +151,24 @@ class LoginPage extends React.PureComponent {
                     }}
                   />
                 </View>
-                <Text style={style.btnText}>Dima</Text>
+                <Text style={style.btnText}>Daryna</Text>
               </TouchableOpacity>
             </View>
             <View style={style.uidWrapperStyle}>
-              {/*<View>*/}
-              {/*  <Text style={style.subtitleStyle}> Login with UID</Text>*/}
-              {/*</View>*/}
-              {/*<View style={style.inputWrapperStyle}>*/}
-              {/*  <TextInput*/}
-              {/*    style={style.textInput}*/}
-              {/*    // ref={this.myRef}*/}
-              {/*    onSubmitEditing={() => this.login('', true)}*/}
-              {/*    onChangeText={(value) => {*/}
-              {/*      this.setState({uid: value});*/}
-              {/*    }}*/}
-              {/*    placeholder="Enter your UID here"*/}
-              {/*  />*/}
-              {/*</View>*/}
+              <View>
+                <Text style={style.subtitleStyle}> Login with UID</Text>
+              </View>
+              <View style={style.inputWrapperStyle}>
+                <TextInput
+                  style={style.textInput}
+                  // ref={this.myRef}
+                  onSubmitEditing={() => this.login('', true)}
+                  onChangeText={(value) => {
+                    this.setState({uid: value});
+                  }}
+                  placeholder="Enter your UID here"
+                />
+              </View>
               <TouchableOpacity
                 style={style.loginBtn}
                 onPress={() => this.login('', true)}>
