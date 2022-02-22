@@ -12,9 +12,13 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   conversationHeaderStyle: {
-    paddingBottom: 32,
+    paddingTop: 6,
+    backgroundColor: '#f6f6f6',
+    paddingBottom: 10,
     position: 'relative',
-    paddingHorizontal: 22 * widthRatio,
+    paddingHorizontal: 16 * widthRatio,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(60, 60, 67, 0.29)',
   },
   contactHeaderCloseStyle: {
     height: 24,
@@ -22,15 +26,18 @@ export default StyleSheet.create({
   },
   conversationHeaderTitleStyle: {
     margin: 0,
-    fontWeight: '700',
+    fontWeight: '600',
     textAlign: 'left',
-    fontSize: 28,
+    fontSize: 17,
+    fontStyle: 'normal',
+    lineHeight: 22,
   },
   contactSearchInputStyle: {
     flex: 1,
     paddingVertical: 4 * heightRatio,
     marginHorizontal: 8 * widthRatio,
-    fontSize: 15,
+    fontSize: 14,
+    fontWeight: '500',
   },
   contactMsgStyle: {
     overflow: 'hidden',
@@ -58,4 +65,31 @@ export default StyleSheet.create({
   },
   flexGrow1: { flexGrow: 1 },
   deleteText: { color: '#fff' },
+  safeAreaStyle: {
+    backgroundColor: '#f6f6f6',
+  },
+  projectSearchStyle: {
+    padding: 5,
+    marginTop: 12,
+    flexDirection: 'row',
+    position: 'relative',
+    alignItems: 'center',
+    width: '100%',
+    borderWidth: 0,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowRadius: 1.41,
+  },
+  projectEditStyle: {
+    fontSize: 17,
+    fontWeight: '400',
+    color: '#3497F9',
+  },
+  projectCreateProjectStyle: {
+    width: '50%'
+  }
 });
