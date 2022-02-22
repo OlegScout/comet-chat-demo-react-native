@@ -45,7 +45,7 @@ class CometChatConversationList extends React.Component {
   decoratorMessage = 'Loading...';
   static contextType = CometChatContext;
 
-  addIcon = (<Icon2 name="edit" size={24} color={theme.color.blue} />);
+  addIcon = (<Icon2 name="edit" size={17} color={theme.color.blue} />);
 
   createGroup = this.addIcon;
 
@@ -1012,15 +1012,48 @@ class CometChatConversationList extends React.Component {
     return (
       <View style={[styles.conversationHeaderStyle]}>
         <View style={styles.headingContainer}>
+          <TouchableOpacity>
+            <Text style={ styles.projectEditStyle }>{ 'Edit' }</Text>
+          </TouchableOpacity>
           <Text style={styles.conversationHeaderTitleStyle}>{ 'Projects' }</Text>
           {this.state.restrictions?.isGroupCreationEnabled ? (
             <TouchableOpacity
-              onPress={() => this.createGroupHandler(true)}
-              style={{ borderRadius: 20 }}>
+              onPress={() => this.createGroupHandler(true)}>
               {this.createGroup}
             </TouchableOpacity>
           ) : null}
         </View>
+        {this.state.restrictions?.isGroupSearchEnabled ? (
+          <TouchableWithoutFeedback
+            onPress={() => this.textInputRef.current.focus()}>
+            <View
+              style={[
+                styles.projectSearchStyle,
+                {
+                  backgroundColor: '#fff',
+                  textShadow: 'none'
+                },
+              ]}>
+              <Icon name="search" size={18} color={this.theme.color.grey} />
+              <TextInput
+                ref={this.textInputRef}
+                value={this.state.textInputValue}
+                autoCompleteType="off"
+                placeholder="Search"
+                placeholderTextColor={this.theme.color.textInputPlaceholderColor}
+                onChangeText={this.searchGroup}
+                clearButtonMode="always"
+                numberOfLines={1}
+                style={[
+                  styles.contactSearchInputStyle,
+                  {
+                    color: `${this.theme.color.primary}`,
+                  },
+                ]}
+              />
+            </View>
+          </TouchableWithoutFeedback>
+        ) : null}
       </View>
     );
   };
@@ -1235,11 +1268,10 @@ class CometChatConversationList extends React.Component {
 
     return (
       <CometChatContextProvider ref={(el) => (this.contextProviderRef = el)}>
-        <SafeAreaView style={{ backgroundColor: 'white' }}>
+        <SafeAreaView style={styles.safeAreaStyle}>
           <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             style={styles.conversationWrapperStyle}>
-            {/*<View style={styles.headerContainer}></View>*/}
             {this.listHeaderComponent()}
             <SwipeListView
               contentContainerStyle={styles.flexGrow1}
