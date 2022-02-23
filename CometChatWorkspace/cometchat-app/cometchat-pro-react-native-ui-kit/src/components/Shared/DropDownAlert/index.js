@@ -42,7 +42,6 @@ export default class DropDownAlert extends Component {
   };
 
   showMessage = (type = 'error', text = 'Something went wrong') => {
-    return;
     this.setState({ errorText: text, type }, () => {
       this.slideIn();
     });

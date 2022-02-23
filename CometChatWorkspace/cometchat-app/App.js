@@ -1,17 +1,11 @@
 import React, {useEffect} from 'react';
 import 'react-native-gesture-handler';
 import {CometChat} from '@cometchat-pro/react-native-chat';
+import {COMET_CHAT_APP_ID, COMET_CHAT_REGION} from '@env';
 import {Provider} from 'react-redux';
 import {store, persistor} from './store/store';
 import StackNavigator from './StackNavigator';
-import {COMETCHAT_CONSTANTS} from './CONSTS';
-import {
-  LogBox,
-  PermissionsAndroid,
-  StyleSheet,
-  Text,
-  Platform,
-} from 'react-native';
+import {LogBox, PermissionsAndroid, StyleSheet, Text, Platform} from 'react-native';
 import {PersistGate} from 'redux-persist/integration/react';
 import theme from './cometchat-pro-react-native-ui-kit/src/resources/theme';
 
@@ -44,13 +38,14 @@ function setDefaultFontFamily() {
 
 const App = () => {
   LogBox.ignoreAllLogs();
-  var appSetting = new CometChat.AppSettingsBuilder()
-    .subscribePresenceForAllUsers()
-    .setRegion(COMETCHAT_CONSTANTS.REGION)
-    .build();
 
   useEffect(() => {
-    CometChat.init(COMETCHAT_CONSTANTS.APP_ID, appSetting)
+    const appSetting = new CometChat.AppSettingsBuilder()
+      .subscribePresenceForAllUsers()
+      .setRegion(COMET_CHAT_REGION)
+      .build();
+
+    CometChat.init(COMET_CHAT_APP_ID, appSetting)
       .then(() => {
         if (CometChat.setSource) {
           CometChat.setSource('ui-kit', Platform.OS, 'react-native');
@@ -82,6 +77,7 @@ const App = () => {
         }
       }
     };
+
     getPermissions();
   }, []);
 

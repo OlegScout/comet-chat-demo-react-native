@@ -4,7 +4,6 @@
 
 # Xcode
 #
-build/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -24,12 +23,8 @@ project.xcworkspace
 
 # Android/IntelliJ
 #
-CometChatWorkspace/cometchat-app/android/app/build/
-cometchat-app/android/app/build/
-/android/app/build/
-/app/build/
-ios/Pods/*
 build/
+release/
 .idea
 .gradle
 local.properties
@@ -60,11 +55,12 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 
-# Pods 
-CometChatWorkspace/cometchat-app/ios/Pods/
-cometchat-app/ios/Pods/
-/ios/Pods/
-ios/Pods/*
+# Pods
+Pods/
 
 # Bundle artifact
 *.jsbundle
+
+# Envirement variables
+.env.*
+.env

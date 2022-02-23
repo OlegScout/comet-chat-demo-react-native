@@ -58,7 +58,6 @@ export default StyleSheet.create({
   },
   infoItemHeadingContainer: {
     marginLeft: 16,
-
     marginTop: 8 * heightRatio,
   },
   infoItemHeadingText: {
@@ -81,5 +80,14 @@ export default StyleSheet.create({
     fontSize: 14,
     color: theme.color.primary,
     marginLeft: 8,
+  },
+  logoutText: {
+    color: theme.color.blue,
+    fontWeight: '500',
+    fontSize: 16,
+  },
+  logoutContainer: {
+    marginLeft: 16,
+    marginTop: 16 * heightRatio,
   },
 });

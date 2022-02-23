@@ -1,66 +1,63 @@
+import {FINITE_STATES} from '../constants';
 import * as actionTypes from './actionTypes';
 
 const initialState = {
+  status: FINITE_STATES.IDLE,
+  error: null,
   user: {},
   isLoggedIn: false,
-  error: null,
-  loading: false,
-  authRedirectPath: '/',
 };
 
-const authStart = (state, action) => {
+const authReset = () => {
+  return initialState;
+};
+
+const authStart = (state) => {
   return {
     ...state,
+    status: FINITE_STATES.LOADING,
     error: null,
-    loading: true,
   };
 };
 
 const authSuccess = (state, action) => {
   return {
     ...state,
+    status: FINITE_STATES.SUCCESS,
     user: action.user,
-    error: null,
     isLoggedIn: action.isLoggedIn,
-    loading: false,
   };
 };
 
 const authFail = (state, action) => {
   return {
     ...state,
+    status: FINITE_STATES.FAILURE,
     error: action.error,
-    loading: false,
   };
 };
 
-const authLogout = (state, action) => {
+const logoutFailure = (state, action) => {
   return {
     ...state,
-    isLoggedIn: false,
-    user: null,
-  };
-};
-
-const setAuthRedirectPath = (state, action) => {
-  return {
-    ...state,
-    authRedirectPath: action.path,
+    error: action.error,
   };
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.LOGOUT_FAILURE:
+      return logoutFailure(state, action);
+    case actionTypes.LOGOUT_SUCCESS:
+      return authReset(state, action);
+    case actionTypes.AUTH_RESET:
+      return authReset(state, action);
     case actionTypes.AUTH_START:
       return authStart(state, action);
     case actionTypes.AUTH_SUCCESS:
       return authSuccess(state, action);
-    case actionTypes.AUTH_FAIL:
+    case actionTypes.AUTH_FAILURE:
       return authFail(state, action);
-    case actionTypes.AUTH_LOGOUT:
-      return authLogout(state, action);
-    case actionTypes.SET_AUTH_REDIRECT_PATH:
-      return setAuthRedirectPath(state, action);
     default:
       return state;
   }

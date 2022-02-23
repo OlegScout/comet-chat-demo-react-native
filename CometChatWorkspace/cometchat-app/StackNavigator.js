@@ -1,10 +1,12 @@
+import React, {memo} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import React from 'react';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 
-import LoginPage from './defaultPages/LoginPage';
-import HomePage from './defaultPages/HomePage';
+import {selectIsLoggedIn} from './store/auth/selectors';
+import SignUpPage from './defaultPages/SignUpPage';
+import SmsConfirmingPage from './defaultPages/SmsConfirmingPage';
+import GSCometChatUI from './components/GSCometChatUI';
 import {
   CometChatUI,
   CometChatMessages,
@@ -15,44 +17,35 @@ import {
   CometChatConversationListWithMessages,
   CometChatConversationList,
 } from './cometchat-pro-react-native-ui-kit';
-import GSCometChatUI from './components/GSCometChatUI'
 
-function StackNavigator(props) {
-  const Stack = createStackNavigator();
+const Stack = createStackNavigator();
 
+function StackNavigator() {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        headerMode="none"
-        initialRouteName={props.isLoggedIn ? 'HomePage' : null}>
-        <Stack.Screen name="LoginPage" component={LoginPage} />
-        <Stack.Screen name="HomePage" component={HomePage} />
-        <Stack.Screen name="GSCometChatUI" component={GSCometChatUI} />
-        <Stack.Screen name="CometChatUI" component={CometChatUI} />
-        <Stack.Screen
-          name="Conversation"
-          component={CometChatConversationListWithMessages}
-        />
-        <Stack.Screen
-          name="ConversationComponent"
-          component={CometChatConversationList}
-        />
-        <Stack.Screen name="Group" component={CometChatGroupListWithMessages} />
-        <Stack.Screen name="GroupComponent" component={CometChatGroupList} />
-        <Stack.Screen name="Users" component={CometChatUserListWithMessages} />
-        <Stack.Screen name="UsersComponent" component={CometChatUserList} />
-        <Stack.Screen name="CometChatMessages" component={CometChatMessages} />
+      <Stack.Navigator headerMode="none">
+        {isLoggedIn ? (
+          <>
+            <Stack.Screen name="GSCometChatUI" component={GSCometChatUI} />
+            <Stack.Screen name="CometChatUI" component={CometChatUI} />
+            <Stack.Screen name="Conversation" component={CometChatConversationListWithMessages} />
+            <Stack.Screen name="ConversationComponent" component={CometChatConversationList} />
+            <Stack.Screen name="Group" component={CometChatGroupListWithMessages} />
+            <Stack.Screen name="GroupComponent" component={CometChatGroupList} />
+            <Stack.Screen name="Users" component={CometChatUserListWithMessages} />
+            <Stack.Screen name="UsersComponent" component={CometChatUserList} />
+            <Stack.Screen name="CometChatMessages" component={CometChatMessages} />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="SignUpPage" component={SignUpPage} />
+            <Stack.Screen name="SmsConfirmingPage" component={SmsConfirmingPage} />
+          </>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-const mapStateToProps = ({reducer}) => {
-  return {
-    loading: reducer.loading,
-    error: reducer.error,
-    isLoggedIn: reducer.isLoggedIn,
-  };
-};
-
-export default connect(mapStateToProps)(StackNavigator);
+export default memo(StackNavigator);
