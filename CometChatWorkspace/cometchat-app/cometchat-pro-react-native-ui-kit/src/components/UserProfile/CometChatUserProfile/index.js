@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { CometChat } from "@cometchat-pro/react-native-chat";
 import { CometChatManager } from '../../../utils/controller';
 import { CometChatAvatar } from '../../Shared';
 import styles from './styles';
@@ -8,43 +9,31 @@ import theme from '../../../resources/theme';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { logger } from '../../../utils/common';
 
-const notificationIcon = (
-  <Icon color={theme.color.helpText} name="notifications" size={28} />
-);
-const privacyIcon = (
-  <Icon color={theme.color.helpText} name="security" size={28} />
-);
+const notificationIcon = <Icon color={theme.color.helpText} name="notifications" size={28} />;
+const privacyIcon = <Icon color={theme.color.helpText} name="security" size={28} />;
 const chatIcon = <Icon color={theme.color.helpText} name="chat" size={28} />;
 const helpIcon = <Icon color={theme.color.helpText} name="help" size={28} />;
-const problemIcon = (
-  <Icon color={theme.color.helpText} name="report-problem" size={28} />
-);
+const problemIcon = <Icon color={theme.color.helpText} name="report-problem" size={28} />;
 
 const CometChatUserProfile = (props) => {
   const [user, setUser] = useState({});
   const viewTheme = { ...theme, ...props.theme };
 
-  /**
-   * Retrieve logged in user details
-   * @param
-   */
-  const getProfile = () => {
+  const handleLogout = () => {
+    CometChat.logout();
+  };
+
+  useEffect(() => {
     new CometChatManager()
       .getLoggedInUser()
       .then((loggedInUser) => {
         setUser(loggedInUser);
       })
       .catch((error) => {
-        logger(
-          '[CometChatUserProfile] getProfile getLoggedInUser error',
-          error,
-        );
+        logger('[CometChatUserProfile] getProfile getLoggedInUser error', error);
       });
-  };
-
-  useEffect(() => {
-    getProfile();
   }, []);
+
   let avatar = null;
   if (user) {
     avatar = (
@@ -106,6 +95,9 @@ const CometChatUserProfile = (props) => {
             {problemIcon}
             <Text style={styles.infoItemText}>Report a Problem</Text>
           </View>
+        </View>
+        <View style={styles.logoutContainer}>
+          <Text style={styles.logoutText} onPress={handleLogout}>Logout</Text>
         </View>
       </View>
     </SafeAreaView>
