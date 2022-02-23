@@ -183,17 +183,17 @@ const CometChatReceiverTextMessageBubble = (props) => {
   return (
     <View style={style.container}>
       <View style={style.innerContainer}>
-        {props.message.receiverType === CometChat.RECEIVER_TYPE.GROUP ? (
-          <View style={style.avatarStyle}>
-            <CometChatAvatar
-              cornerRadius={18}
-              borderColor={viewTheme.color.secondary}
-              borderWidth={0}
-              image={senderAvatar}
-              name={message.sender.name}
-            />
-          </View>
-        ) : null}
+        {/*{props.message.receiverType === CometChat.RECEIVER_TYPE.GROUP ? (*/}
+        {/*  <View style={style.avatarStyle}>*/}
+        {/*    <CometChatAvatar*/}
+        {/*      cornerRadius={18}*/}
+        {/*      borderColor={viewTheme.color.secondary}*/}
+        {/*      borderWidth={0}*/}
+        {/*      image={senderAvatar}*/}
+        {/*      name={message.sender.name}*/}
+        {/*    />*/}
+        {/*  </View>*/}
+        {/*) : null}*/}
         <View>
           {props.message.receiverType === CometChat.RECEIVER_TYPE.GROUP ? (
             <View style={style.senderNameStyle}>
@@ -211,9 +211,6 @@ const CometChatReceiverTextMessageBubble = (props) => {
                 <View
                   style={[
                     style.messageWrapperStyle,
-                    {
-                      backgroundColor: '#F8F8F8',
-                    },
                   ]}>
                   {messageText}
                 </View>

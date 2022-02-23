@@ -67,15 +67,15 @@ class CometChatReceiverDirectCallBubble extends React.Component {
 
     return (
       <View style={Styles.mainContainer}>
-        <View style={Styles.mainWrapper}>
-          <CometChatAvatar
-            cornerRadius={18}
-            borderColor={theme.color.secondary}
-            borderWidth={0}
-            image={senderAvatar}
-            name={this.state?.message?.sender.name}
-          />
-        </View>
+        {/*<View style={Styles.mainWrapper}>*/}
+        {/*  <CometChatAvatar*/}
+        {/*    cornerRadius={18}*/}
+        {/*    borderColor={theme.color.secondary}*/}
+        {/*    borderWidth={0}*/}
+        {/*    image={senderAvatar}*/}
+        {/*    name={this.state?.message?.sender.name}*/}
+        {/*  />*/}
+        {/*</View>*/}
         <View style={Styles.nameContainer}>
           {this.state?.message?.receiverType ===
           CometChat.RECEIVER_TYPE.GROUP ? (

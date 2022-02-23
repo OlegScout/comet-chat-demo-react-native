@@ -25,17 +25,17 @@ const CometChatReceiverFileMessageBubble = (props) => {
   return (
     <View style={style.mainContainerStyle}>
       <View style={style.messageContainer}>
-        {props.message.receiverType === CometChat.RECEIVER_TYPE.GROUP ? (
-          <View style={style.avatarStyle}>
-            <CometChatAvatar
-              cornerRadius={18}
-              borderColor={props.theme.color.secondary}
-              borderWidth={0}
-              image={avatarImg}
-              name={message.sender.name}
-            />
-          </View>
-        ) : null}
+        {/*{props.message.receiverType === CometChat.RECEIVER_TYPE.GROUP ? (*/}
+        {/*  <View style={style.avatarStyle}>*/}
+        {/*    <CometChatAvatar*/}
+        {/*      cornerRadius={18}*/}
+        {/*      borderColor={props.theme.color.secondary}*/}
+        {/*      borderWidth={0}*/}
+        {/*      image={avatarImg}*/}
+        {/*      name={message.sender.name}*/}
+        {/*    />*/}
+        {/*  </View>*/}
+        {/*) : null}*/}
         <View>
           {props.message.receiverType === CometChat.RECEIVER_TYPE.GROUP ? (
             <View style={style.senderNameContainer}>
