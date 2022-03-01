@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { widthRatio, heightRatio } from '../../../utils/consts';
+import theme from '../../../resources/theme';
 
 export default StyleSheet.create({
   conversationWrapperStyle: {
@@ -18,7 +19,7 @@ export default StyleSheet.create({
     position: 'relative',
     paddingHorizontal: 16 * widthRatio,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(60, 60, 67, 0.29)',
+    borderBottomColor: theme.borderColor.primary,
   },
   contactHeaderCloseStyle: {
     height: 24,

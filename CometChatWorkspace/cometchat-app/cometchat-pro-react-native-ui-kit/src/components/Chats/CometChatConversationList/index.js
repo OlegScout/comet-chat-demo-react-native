@@ -1034,13 +1034,13 @@ class CometChatConversationList extends React.Component {
                   textShadow: 'none'
                 },
               ]}>
-              <Icon name="search" size={18} color={this.theme.color.grey} />
+              <Icon name="search" size={18} color={this.theme.color.searchText} />
               <TextInput
                 ref={this.textInputRef}
                 value={this.state.textInputValue}
                 autoCompleteType="off"
                 placeholder="Search"
-                placeholderTextColor={this.theme.color.textInputPlaceholderColor}
+                placeholderTextColor={this.theme.color.searchText}
                 onChangeText={this.searchGroup}
                 clearButtonMode="always"
                 numberOfLines={1}
