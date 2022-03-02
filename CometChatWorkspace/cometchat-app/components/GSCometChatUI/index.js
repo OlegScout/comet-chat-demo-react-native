@@ -8,6 +8,7 @@ import { CometChatContextProvider } from '../../cometchat-pro-react-native-ui-ki
 import { CometChatUserProfile } from '../../cometchat-pro-react-native-ui-kit/src/components/UserProfile';
 import ShopifyWebView from '../ShopifyWebView';
 
+import Icon from "react-native-vector-icons/Ionicons";
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import theme from '../../cometchat-pro-react-native-ui-kit/src/resources/theme';
 import { heightRatio } from '../../cometchat-pro-react-native-ui-kit/src/utils/consts';
@@ -43,8 +44,8 @@ function GSCometChatUI() {
             tabBarIcon: ({ color }) => {
               if (route.name === 'Projects') {
                 return (
-                  <MaterialIcons
-                    name="chat"
+                  <Icon
+                    name="briefcase-outline"
                     size={15 * heightRatio}
                     color={color}
                   />
@@ -52,8 +53,8 @@ function GSCometChatUI() {
               }
               if (route.name === 'Settings') {
                 return (
-                  <MaterialIcons
-                    name="settings"
+                  <Icon
+                    name="settings-outline"
                     size={15 * heightRatio}
                     color={color}
                   />
@@ -61,8 +62,8 @@ function GSCometChatUI() {
               }
               if (route.name === 'Calls (Users)') {
                 return (
-                  <MaterialIcons
-                    name="call"
+                  <Icon
+                    name="call-outline"
                     size={15 * heightRatio}
                     color={color}
                   />
@@ -70,8 +71,8 @@ function GSCometChatUI() {
               }
               if (route.name === 'Cart (Groups)') {
                 return (
-                  <MaterialIcons
-                    name="shopping-cart"
+                  <Icon
+                    name="cart-outline"
                     size={15 * heightRatio}
                     color={color}
                   />
