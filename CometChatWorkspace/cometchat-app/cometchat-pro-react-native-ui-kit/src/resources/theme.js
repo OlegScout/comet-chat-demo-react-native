@@ -12,7 +12,8 @@ export default {
     red: '#ff3b30',
     listUnderlayColor: 'rgba(0,0,0,0.22)',
     textInputPlaceholderColor: 'rgba(0,0,0,0.5)',
-    searchText: '#848488',
+    lightGrey: '#848488',
+    darkGrey: '#3C3C43',
   },
   borderColor: {
     primary: '#eaeaea',

@@ -7,7 +7,18 @@ export default StyleSheet.create({
     height: '100%',
     backgroundColor: 'white',
   },
-  headingContainer: {
+  projectHeadContainer: {
+    paddingHorizontal: 16 * widthRatio,
+    borderBottomWidth: 1,
+    borderBottomColor: theme.borderColor.primary,
+    paddingBottom: 8,
+  },
+  projectCompletedContainer: {
+    paddingHorizontal: 16 * widthRatio,
+    height: 44,
+    justifyContent: 'center',
+  },
+  projectHeadingContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -15,17 +26,13 @@ export default StyleSheet.create({
   conversationHeaderStyle: {
     paddingTop: 6,
     backgroundColor: '#f6f6f6',
-    paddingBottom: 10,
     position: 'relative',
-    paddingHorizontal: 16 * widthRatio,
-    borderBottomWidth: 1,
-    borderBottomColor: theme.borderColor.primary,
   },
   contactHeaderCloseStyle: {
     height: 24,
     width: '33%',
   },
-  conversationHeaderTitleStyle: {
+  conversationHeaderTitle: {
     margin: 0,
     fontWeight: '600',
     textAlign: 'left',
@@ -33,12 +40,13 @@ export default StyleSheet.create({
     fontStyle: 'normal',
     lineHeight: 22,
   },
-  contactSearchInputStyle: {
+  contactSearchInput: {
     flex: 1,
     paddingVertical: 4 * heightRatio,
     marginHorizontal: 8 * widthRatio,
     fontSize: 14,
     fontWeight: '500',
+    color: theme.color.primary,
   },
   contactMsgStyle: {
     overflow: 'hidden',
@@ -69,7 +77,7 @@ export default StyleSheet.create({
   safeAreaStyle: {
     backgroundColor: '#f6f6f6',
   },
-  projectSearchStyle: {
+  projectSearchContainer: {
     padding: 5,
     marginTop: 12,
     flexDirection: 'row',
@@ -84,13 +92,21 @@ export default StyleSheet.create({
       height: 1,
     },
     shadowRadius: 1.41,
+    backgroundColor: '#fff',
   },
-  projectEditStyle: {
+  projectEditCta: {
     fontSize: 17,
     fontWeight: '400',
     color: '#3497F9',
   },
   projectCreateProjectStyle: {
     width: '50%'
+  },
+  projectCompletedArchivedWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  projectEditStyle: {
+    color: '#000'
   }
 });

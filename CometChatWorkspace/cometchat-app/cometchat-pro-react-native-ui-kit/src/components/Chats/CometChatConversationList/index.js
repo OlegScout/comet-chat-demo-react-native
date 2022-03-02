@@ -1011,49 +1011,49 @@ class CometChatConversationList extends React.Component {
     //list header avatar here.
     return (
       <View style={[styles.conversationHeaderStyle]}>
-        <View style={styles.headingContainer}>
-          <TouchableOpacity>
-            <Text style={ styles.projectEditStyle }>{ 'Edit' }</Text>
-          </TouchableOpacity>
-          <Text style={styles.conversationHeaderTitleStyle}>{ 'Projects' }</Text>
-          {this.state.restrictions?.isGroupCreationEnabled ? (
-            <TouchableOpacity
-              onPress={() => this.createGroupHandler(true)}>
-              {this.createGroup}
+        <View style={styles.projectHeadContainer}>
+          <View style={styles.projectHeadingContainer}>
+            <TouchableOpacity>
+              <Text style={ styles.projectEditCta }>{ 'Edit' }</Text>
             </TouchableOpacity>
+            <Text style={styles.conversationHeaderTitle}>{ 'Projects' }</Text>
+            {this.state.restrictions?.isGroupCreationEnabled ? (
+              <TouchableOpacity
+                onPress={() => this.createGroupHandler(true)}>
+                {this.createGroup}
+              </TouchableOpacity>
+            ) : null}
+          </View>
+          {this.state.restrictions?.isGroupSearchEnabled ? (
+            <TouchableWithoutFeedback
+              onPress={() => this.textInputRef.current.focus()}>
+              <View
+                style={ styles.projectSearchContainer }>
+                <Icon name="search" size={18} color={this.theme.color.lightGrey} />
+                <TextInput
+                  ref={this.textInputRef}
+                  value={this.state.textInputValue}
+                  autoCompleteType="off"
+                  placeholder="Search"
+                  placeholderTextColor={this.theme.color.lightGrey}
+                  onChangeText={this.searchGroup}
+                  clearButtonMode="always"
+                  numberOfLines={1}
+                  style={ styles.contactSearchInput }
+                />
+              </View>
+            </TouchableWithoutFeedback>
           ) : null}
         </View>
-        {this.state.restrictions?.isGroupSearchEnabled ? (
-          <TouchableWithoutFeedback
-            onPress={() => this.textInputRef.current.focus()}>
-            <View
-              style={[
-                styles.projectSearchStyle,
-                {
-                  backgroundColor: '#fff',
-                  textShadow: 'none'
-                },
-              ]}>
-              <Icon name="search" size={18} color={this.theme.color.searchText} />
-              <TextInput
-                ref={this.textInputRef}
-                value={this.state.textInputValue}
-                autoCompleteType="off"
-                placeholder="Search"
-                placeholderTextColor={this.theme.color.searchText}
-                onChangeText={this.searchGroup}
-                clearButtonMode="always"
-                numberOfLines={1}
-                style={[
-                  styles.contactSearchInputStyle,
-                  {
-                    color: `${this.theme.color.primary}`,
-                  },
-                ]}
-              />
+        <View style={styles.projectCompletedContainer}>
+          <TouchableOpacity>
+            <View style={styles.projectCompletedArchivedWrapper}>
+              <Icon name="archive-outline" size={18} color={theme.color.lightGrey} />
+              <Text style={ styles.projectEditStyle }>{ 'Completed & archived' }</Text>
+              <Icon name="chevron-forward-outline" size={18} color={theme.color.darkGrey} />
             </View>
-          </TouchableWithoutFeedback>
-        ) : null}
+          </TouchableOpacity>
+        </View>
       </View>
     );
   };
