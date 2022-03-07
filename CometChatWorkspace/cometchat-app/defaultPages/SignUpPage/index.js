@@ -5,7 +5,9 @@ import {getErrorMessage, getValidationErrors} from '../../api/utils';
 import {FINITE_STATES} from '../../store/constants';
 import {AuthActions, SignUpActions} from '../../store/actions';
 import {AuthSelectors, SignUpSelectors} from '../../store/selectors';
-import FormView from '../../components/FormView';
+import SignUpScreenContainer from '../../components/SignUpScreenContainer';
+import FullScreenLoader from '../../components/FullScreenLoader';
+import DropDownAlert from '../../components/DropDownAlert';
 import SignUpForm from '../../components/SignUpForm';
 
 const SignUpPage = (props) => {
@@ -40,9 +42,13 @@ const SignUpPage = (props) => {
   }, [dispatch]);
 
   return (
-    <FormView loading={loading} errorMessage={getErrorMessage(error)}>
-      <SignUpForm validationErrors={getValidationErrors(error)} onSubmit={handleSignUp} />
-    </FormView>
+    <>
+      <FullScreenLoader loading={loading} />
+      <DropDownAlert type="error" message={getErrorMessage(error)} />
+      <SignUpScreenContainer>
+        <SignUpForm validationErrors={getValidationErrors(error)} onSubmit={handleSignUp} />
+      </SignUpScreenContainer>
+    </>
   );
 };
 
