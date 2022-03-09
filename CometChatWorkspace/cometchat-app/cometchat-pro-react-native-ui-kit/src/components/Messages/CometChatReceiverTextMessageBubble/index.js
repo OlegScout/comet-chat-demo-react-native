@@ -11,8 +11,8 @@ import theme from '../../../resources/theme';
 import Autolink from 'react-native-autolink';
 import CometChatThreadedMessageReplyCount from '../CometChatThreadedMessageReplyCount';
 import CometChatReadReceipt from '../CometChatReadReceipt';
-import CometChatAvatar from '../../Shared/CometChatAvatar';
 import style from './styles';
+import messagesStyle from '../messagesStyles';
 import CometChatMessageReactions from '../../Messages/Extensions/CometChatMessageReactions';
 import * as enums from '../../../utils/enums';
 import * as actions from '../../../utils/actions';
@@ -183,21 +183,10 @@ const CometChatReceiverTextMessageBubble = (props) => {
   return (
     <View style={style.container}>
       <View style={style.innerContainer}>
-        {/*{props.message.receiverType === CometChat.RECEIVER_TYPE.GROUP ? (*/}
-        {/*  <View style={style.avatarStyle}>*/}
-        {/*    <CometChatAvatar*/}
-        {/*      cornerRadius={18}*/}
-        {/*      borderColor={viewTheme.color.secondary}*/}
-        {/*      borderWidth={0}*/}
-        {/*      image={senderAvatar}*/}
-        {/*      name={message.sender.name}*/}
-        {/*    />*/}
-        {/*  </View>*/}
-        {/*) : null}*/}
-        <View>
+        <View style={messagesStyle.receiverMessageWrapper}>
           {props.message.receiverType === CometChat.RECEIVER_TYPE.GROUP ? (
-            <View style={style.senderNameStyle}>
-              <Text style={{ color: props.theme.color.helpText }}>
+            <View style={messagesStyle.receiverNameWrapper}>
+              <Text style={ messagesStyle.receiverNameText }>
                 {message.sender.name}
               </Text>
             </View>
@@ -209,16 +198,14 @@ const CometChatReceiverTextMessageBubble = (props) => {
               }}>
               <View style={{ flexDirection: 'row' }}>
                 <View
-                  style={[
-                    style.messageWrapperStyle,
-                  ]}>
+                  style={ messagesStyle.messageBodyWrapper }>
                   {messageText}
                 </View>
               </View>
             </TouchableWithoutFeedback>
           </View>
-          <View style={[style.containerStyle]}>
-            <View style={[style.messageInfoWrapperStyle]}>
+          <View>
+            <View style={ messagesStyle.messageInfoWrapper }>
               <CometChatReadReceipt {...props} message={message} />
 
               <CometChatThreadedMessageReplyCount

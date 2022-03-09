@@ -12,6 +12,7 @@ import Autolink from 'react-native-autolink';
 import CometChatThreadedMessageReplyCount from '../CometChatThreadedMessageReplyCount';
 import CometChatReadReceipt from '../CometChatReadReceipt';
 import style from './styles';
+import messagesStyle from '../messagesStyles';
 import { CometChatMessageReactions } from '../../Messages/Extensions';
 import * as enums from '../../../utils/enums';
 import * as actions from '../../../utils/actions';
@@ -53,7 +54,7 @@ const CometChatSenderTextMessageBubble = (props) => {
     return (
       <Autolink
         text={message.text}
-        style={style.autoLinkStyle}
+        style={messagesStyle.senderAutoLinkText}
         textProps={{ selectable: true }}
         linkProps={{ suppressHighlighting: true }}
         linkStyle={style.linkStyle}
@@ -100,10 +101,7 @@ const CometChatSenderTextMessageBubble = (props) => {
             : 'Visit';
           messageText = (
             <View
-              style={[
-                style.messagePreviewContainerStyle,
-                { backgroundColor: viewTheme.backgroundColor.white },
-              ]}>
+              style={ style.messagePreviewContainerStyle }>
               <View style={style.messagePreviewWrapperStyle}>
                 <Image
                   style={
@@ -183,14 +181,14 @@ const CometChatSenderTextMessageBubble = (props) => {
   }
 
   return (
-    <View style={style.container}>
+    <View style={messagesStyle.senderMessageWrapper}>
       <TouchableWithoutFeedback
         onLongPress={() => {
           props.actionGenerated(actions.OPEN_MESSAGE_ACTIONS, message);
         }}>
-        <View style={style.messageWrapperStyle}>{messageText}</View>
+        <View style={messagesStyle.senderMessageBodyWrapper}>{messageText}</View>
       </TouchableWithoutFeedback>
-      <View style={style.messageInfoWrapperStyle}>
+      <View style={messagesStyle.messageInfoWrapper}>
         <CometChatThreadedMessageReplyCount
           theme={props.theme}
           {...props}
