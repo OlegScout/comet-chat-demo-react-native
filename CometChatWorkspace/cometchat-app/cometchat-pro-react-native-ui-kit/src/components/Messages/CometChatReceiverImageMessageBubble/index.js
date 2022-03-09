@@ -6,6 +6,7 @@ import CometChatThreadedMessageReplyCount from '../CometChatThreadedMessageReply
 import CometChatReadReceipt from '../CometChatReadReceipt';
 import CometChatMessageReactions from '../../Messages/Extensions/CometChatMessageReactions';
 import style from './styles';
+import messagesStyle from '../messagesStyles';
 import theme from '../../../resources/theme';
 import * as enums from '../../../utils/enums';
 import * as actions from '../../../utils/actions';
@@ -72,29 +73,18 @@ const CometChatReceiverImageMessageBubble = (props) => {
   return (
     <View style={style.container}>
       <View style={style.mainContainer}>
-        {/*{props.message.receiverType === CometChat.RECEIVER_TYPE.GROUP ? (*/}
-        {/*  <View style={style.avatarStyle}>*/}
-        {/*    <CometChatAvatar*/}
-        {/*      cornerRadius={18}*/}
-        {/*      borderColor={viewTheme.color.secondary}*/}
-        {/*      borderWidth={0}*/}
-        {/*      image={senderAvatar}*/}
-        {/*      name={message.sender.name}*/}
-        {/*    />*/}
-        {/*  </View>*/}
-        {/*) : null}*/}
-        <View>
+        <View style={messagesStyle.receiverMessageWrapper}>
           {props.message.receiverType === CometChat.RECEIVER_TYPE.GROUP ? (
-            <View style={style.senderNameContainer}>
-              <Text style={{ color: viewTheme.color.helpText }}>
+            <View style={messagesStyle.receiverNameWrapper}>
+              <Text style={ messagesStyle.receiverNameText }>
                 {message.sender.name}
               </Text>
             </View>
           ) : null}
-          <View style={[style.messageWrapperStyle]}>
+          <View style={ messagesStyle.receiverMessageImageWrapper }>
             <TouchableOpacity
               onPress={() => open()}
-              style={style.messageImgWrapperStyle}
+              style={ messagesStyle.receiverImageWrapper }
               onLongPress={() => {
                 props.actionGenerated(actions.OPEN_MESSAGE_ACTIONS, message);
               }}>
@@ -111,7 +101,7 @@ const CometChatReceiverImageMessageBubble = (props) => {
               />
             </TouchableOpacity>
           </View>
-          <View style={style.messageInfoWrapperStyle}>
+          <View style={ messagesStyle.messageInfoWrapper }>
             <CometChatReadReceipt {...props} message={message} />
 
             <CometChatThreadedMessageReplyCount {...props} message={message} />

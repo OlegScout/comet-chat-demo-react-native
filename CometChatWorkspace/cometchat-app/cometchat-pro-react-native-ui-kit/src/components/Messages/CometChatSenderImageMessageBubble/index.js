@@ -6,6 +6,7 @@ import CometChatThreadedMessageReplyCount from '../CometChatThreadedMessageReply
 import { CometChatMessageReactions } from '../../Messages/Extensions';
 import CometChatReadReceipt from '../CometChatReadReceipt';
 import style from './styles';
+import messagesStyle from '../messagesStyles';
 import * as enums from '../../../utils/enums';
 import * as actions from '../../../utils/actions';
 
@@ -62,14 +63,9 @@ const CometChatSenderImageMessageBubble = (props) => {
   }
 
   return (
-    <View style={style.container}>
+    <View style={messagesStyle.senderMessageWrapper}>
       <View
-        style={[
-          style.messageWrapperStyle,
-          {
-            backgroundColor: props.theme.backgroundColor.blue,
-          },
-        ]}>
+        style={ messagesStyle.senderImageWrapper }>
         <TouchableOpacity
           onPress={() => open()}
           style={style.messageImgWrapperStyle}
