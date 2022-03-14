@@ -7,6 +7,10 @@ export default StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 3 * widthRatio,
   },
+  receiverTextMessageContainer: {
+    maxWidth: '81%',
+    minWidth: '25%',
+  },
   senderMessageWrapper: {
     backgroundColor: '#DCF7C5',
     borderRadius: 8,
@@ -44,6 +48,11 @@ export default StyleSheet.create({
     width: '100%',
     height: 200,
     flexShrink: 0,
+  },
+  receiverMessageImage: {
+    borderRadius: 8,
+    width: '100%',
+    height: '100%',
   },
   receiverNameWrapper: {
     marginBottom: 2 * heightRatio,
@@ -85,5 +94,26 @@ export default StyleSheet.create({
     fontSize: 16,
     lineHeight: 19,
     letterSpacing: -0.3,
+  },
+  messageInput: {
+    color: 'black',
+    fontSize: 15,
+    paddingHorizontal: 10,
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    flex: 1,
+    height: 32,
+    borderWidth: 0.5,
+    borderColor: '#8E8E93',
+  },
+  iconSticker: {
+    position: "absolute",
+    right: 10,
+    top: 7,
+  },
+  textFieldMainContainer: {
+    flexDirection: 'row',
+    padding: 10,
+    alignItems: 'center'
   },
 });

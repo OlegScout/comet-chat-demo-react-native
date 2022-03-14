@@ -191,7 +191,7 @@ const CometChatReceiverTextMessageBubble = (props) => {
               </Text>
             </View>
           ) : null}
-          <View style={style.messageContainer}>
+          <View style={messagesStyle.receiverTextMessageContainer}>
             <TouchableWithoutFeedback
               onLongPress={() => {
                 props.actionGenerated(actions.OPEN_MESSAGE_ACTIONS, message);

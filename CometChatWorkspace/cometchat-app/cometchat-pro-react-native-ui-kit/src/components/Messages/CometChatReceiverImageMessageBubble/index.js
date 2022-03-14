@@ -92,7 +92,7 @@ const CometChatReceiverImageMessageBubble = (props) => {
                 defaultSource={{
                   uri: message?.localFile?.url,
                 }}
-                style={style.messageImg}
+                style={messagesStyle.receiverMessageImage}
                 source={{
                   uri: thumbnailGenerationObject
                     ? thumbnailGenerationObject.url_small

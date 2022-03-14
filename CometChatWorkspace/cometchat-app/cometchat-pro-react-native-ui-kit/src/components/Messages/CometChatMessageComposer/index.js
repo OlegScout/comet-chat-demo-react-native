@@ -13,13 +13,11 @@ import {
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Icon2 from 'react-native-vector-icons/Ionicons';
 import AntDIcon from 'react-native-vector-icons/AntDesign';
 import { CometChat } from '@cometchat-pro/react-native-chat';
 import Sound from 'react-native-sound';
-
+import GsIconSticker from '../../../../../icons/gsIconSticker.svg';
 import EmojiBoard from 'react-native-emoji-board'
-
 import style from './styles';
 
 import {
@@ -35,6 +33,7 @@ import * as actions from '../../../utils/actions';
 import { heightRatio } from '../../../utils/consts';
 import { logger } from '../../../utils/common';
 import { CometChatContext } from '../../../utils/CometChatContext';
+import messagesStyle from "../messagesStyles";
 
 export default class CometChatMessageComposer extends React.PureComponent {
   static contextType = CometChatContext;
@@ -828,9 +827,9 @@ export default class CometChatMessageComposer extends React.PureComponent {
             ? {
                 marginBottom: 21 * heightRatio,
                 elevation: 5,
-                backgroundColor: '#fff',
+                backgroundColor: '#F6F6F6',
               }
-            : { elevation: 5, backgroundColor: '#fff' }
+            : { elevation: 5, backgroundColor: '#F6F6F6' }
         }>
         {blockedPreview}
         {editPreview}
@@ -854,14 +853,13 @@ export default class CometChatMessageComposer extends React.PureComponent {
             onPress={() => {
               this.setState({ composerActionsVisible: true });
             }}>
-            <AntDIcon size={26} name="pluscircle" color="rgba(0,0,0,0.35)" />
+            <AntDIcon size={20} name="plus" color="#3497F9" />
           </TouchableOpacity>
           <View style={style.textInputContainer}>
             <TextInput
-              style={style.messageInputStyle}
+              style={ messagesStyle.messageInput }
               editable={!disabled}
               value={this.state.messageInput}
-              placeholder="Type a Message..."
               onChangeText={(text) => this.changeHandler(text)}
               onBlur={this.endTyping}
               ref={this.messageInputRef}
@@ -872,7 +870,7 @@ export default class CometChatMessageComposer extends React.PureComponent {
               onPress={() => {
                 this.setState({ emojiVisible: true });
               }}>
-              <Icon2 size={26} name="happy-outline" color="rgba(0,0,0,0.35)" />
+              <GsIconSticker style={ messagesStyle.iconSticker } />
             </TouchableOpacity>
             {sendBtn}
           </View>
