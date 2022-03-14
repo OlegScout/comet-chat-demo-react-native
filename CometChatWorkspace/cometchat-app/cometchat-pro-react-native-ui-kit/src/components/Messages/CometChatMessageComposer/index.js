@@ -13,9 +13,12 @@ import {
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon2 from 'react-native-vector-icons/Ionicons';
 import AntDIcon from 'react-native-vector-icons/AntDesign';
 import { CometChat } from '@cometchat-pro/react-native-chat';
 import Sound from 'react-native-sound';
+
+import EmojiBoard from 'react-native-emoji-board'
 
 import style from './styles';
 
@@ -51,6 +54,7 @@ export default class CometChatMessageComposer extends React.PureComponent {
     this.state = {
       showFilePicker: false,
       messageInput: '',
+      emojiInput: '',
       messageType: '',
       emojiViewer: false,
       createPoll: false,
@@ -58,6 +62,7 @@ export default class CometChatMessageComposer extends React.PureComponent {
       replyPreview: null,
       stickerViewer: false,
       composerActionsVisible: false,
+      emojiVisible: false,
       user: null,
       keyboardActivity: false,
       restrictions: null,
@@ -809,6 +814,13 @@ export default class CometChatMessageComposer extends React.PureComponent {
         actionGenerated={this.actionHandler}
       />
     );
+
+    const onClick = emoji => {
+      console.log(emoji);
+      this.state.messageInput += emoji.code
+      this.setState({ emojiVisible: false });
+    };
+
     return (
       <View
         style={
@@ -834,6 +846,7 @@ export default class CometChatMessageComposer extends React.PureComponent {
           toggleCreatePoll={this.toggleCreatePoll}
           sendMediaMessage={this.sendMediaMessage}
         />
+        <EmojiBoard showBoard={this.state.emojiVisible} onClick={onClick} />
         <View style={style.mainContainer}>
           <TouchableOpacity
             style={style.plusCircleContainer}
@@ -853,6 +866,14 @@ export default class CometChatMessageComposer extends React.PureComponent {
               onBlur={this.endTyping}
               ref={this.messageInputRef}
             />
+            <TouchableOpacity
+              style={style.plusCircleContainer}
+              disabled={disabled}
+              onPress={() => {
+                this.setState({ emojiVisible: true });
+              }}>
+              <Icon2 size={26} name="happy-outline" color="rgba(0,0,0,0.35)" />
+            </TouchableOpacity>
             {sendBtn}
           </View>
           {liveReactionBtn}
